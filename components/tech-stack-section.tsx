@@ -5,9 +5,12 @@ import { ArrowUpRight } from "lucide-react"
 
 const techStack = [
   { name: "Python", level: 95 },
-  { name: "TensorFlow/PyTorch", level: 90 },
-  { name: "Verilog/VHDL", level: 85 },
-  { name: "JavaScript/TypeScript", level: 80 },
+  { name: "FastAPI & REST APIs", level: 92 },
+  { name: "TensorFlow / PyTorch", level: 90 },
+  { name: "AWS Cloud & Serverless", level: 88 },
+  { name: "Verilog / VHDL", level: 85 },
+  { name: "PostgreSQL & Databases", level: 85 },
+  { name: "JavaScript / TypeScript", level: 80 },
 ]
 
 export function TechStackSection() {

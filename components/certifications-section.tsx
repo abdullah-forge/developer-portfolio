@@ -5,9 +5,39 @@ import { motion, AnimatePresence } from "framer-motion"
 import { Award, FileText, ArrowUpRight, ShieldCheck, Database, Cloud, BookOpen, BrainCircuit } from "lucide-react"
 import Image from "next/image"
 
-const categories = ["all", "coursera", "datacamp", "hackathons"]
+const categories = ["all", "aws", "coursera", "datacamp", "hackathons"]
 
 const credentials = [
+  // AWS Badges (Credly)
+  {
+    id: "aws-genai-practitioner",
+    title: "AWS Cloud Quest: Generative AI Practitioner",
+    issuer: "Amazon Web Services Training and Certification",
+    date: "2026",
+    category: "aws",
+    type: "badge",
+    description: "Earners showcase proficiency in building generative AI solutions utilizing AWS AI services including prompt engineering, code generation, chatbots, content moderation, and model fine-tuning.",
+    fileUrl: "https://www.credly.com/earner/earned/badge/39c6ee3c-56cb-4119-8bdc-fa8905bc6368",
+    imageUrl: "/aws-genai-practitioner.png",
+    icon: Award,
+    accent: "from-amber-500/20 to-orange-500/20",
+    borderAccent: "group-hover:border-amber-500/50"
+  },
+  {
+    id: "aws-serverless-developer",
+    title: "AWS SimuLearn - Serverless Developer",
+    issuer: "Amazon Web Services Training and Certification",
+    date: "2026",
+    category: "aws",
+    type: "badge",
+    description: "Demonstrates solution building knowledge with multi-tiered serverless applications and hands-on experience with AWS serverless architecture, Lambda, API Gateway, and cloud development.",
+    fileUrl: "https://www.credly.com/earner/earned/badge/9c550fc4-fa65-4d95-a24a-9188f5eacf79",
+    imageUrl: "/aws-serverless-developer.png",
+    icon: Cloud,
+    accent: "from-blue-500/20 to-indigo-500/20",
+    borderAccent: "group-hover:border-blue-500/50"
+  },
+
   // Hackathons & Badges
   {
     id: "hackathon-cert",
@@ -273,15 +303,30 @@ export function CertificationsSection() {
               Badges &<br />Certificates
             </motion.h2>
           </div>
-          <motion.p 
-            className="text-muted-foreground max-w-sm md:text-right"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            Verifiable proof of technical courses completed, challenges conquered, and achievements.
-          </motion.p>
+          <div className="flex flex-col md:items-end gap-3">
+            <motion.p 
+              className="text-muted-foreground max-w-sm md:text-right"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              Verifiable proof of technical courses completed, challenges conquered, and achievements.
+            </motion.p>
+            <motion.a
+              href="https://www.credly.com/earner/dashboard/home"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-primary/10 hover:bg-primary/20 text-primary border border-primary/25 text-xs font-semibold transition-colors"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+            >
+              View Credly Badges Profile
+              <ArrowUpRight className="w-3.5 h-3.5" />
+            </motion.a>
+          </div>
         </div>
 
         {/* Category Filters */}
@@ -296,7 +341,7 @@ export function CertificationsSection() {
                   : "bg-muted/30 text-muted-foreground border-border/40 hover:text-foreground hover:bg-muted/50"
               }`}
             >
-              {cat === "all" ? "All Credentials" : cat === "hackathons" ? "Hackathons & Society" : cat}
+              {cat === "all" ? "All Credentials" : cat === "aws" ? "AWS Badges" : cat === "hackathons" ? "Hackathons & Society" : cat}
             </button>
           ))}
         </div>

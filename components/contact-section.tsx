@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { ArrowUpRight, Mail, MapPin, Github, Linkedin, Twitter } from "lucide-react"
+import { ArrowUpRight, Mail, MapPin, Github, Linkedin, Twitter, Award } from "lucide-react"
 
 const menuLinks = [
   { label: "Home", href: "#" },
@@ -15,6 +15,7 @@ const socialLinks = [
   { label: "GitHub", href: "https://github.com/abdullah-forge", icon: Github },
   { label: "LinkedIn", href: "https://www.linkedin.com/in/m-abdullah-ce?utm_source=share_via&utm_content=profile&utm_medium=member_android", icon: Linkedin },
   { label: "Twitter", href: "https://x.com/_Abdulah_virk", icon: Twitter },
+  { label: "Credly Badges", href: "https://www.credly.com/earner/dashboard/home", icon: Award },
 ]
 
 export function ContactSection() {

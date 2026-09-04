@@ -1,13 +1,17 @@
 "use client"
 
-import { motion } from "framer-motion"
-import { Brain, Building2, Github, ExternalLink, Sparkles, ArrowUpRight, Cpu, Globe, Shield, Gamepad2 } from "lucide-react"
+import { useState } from "react"
+import { motion, AnimatePresence } from "framer-motion"
+import { Brain, Building2, Github, ExternalLink, Sparkles, ArrowUpRight, Cpu, Globe, Shield, Gamepad2, Database } from "lucide-react"
 import Image from "next/image"
+
+const projectCategories = ["all", "fastapi", "ai", "hardware", "apps"]
 
 const projects = [
   {
     id: 1,
     title: "AEGIS Swarm",
+    category: "ai",
     description: "An advanced multi-agent AI system designed for executing complex tasks autonomously, featuring collaborative agentic workflows and swarm communication layers.",
     tags: ["Agent Swarm", "Multi-Agent AI", "Hugging Face Space"],
     icon: Brain,
@@ -19,7 +23,45 @@ const projects = [
   },
   {
     id: 2,
+    title: "Bank Reconciliation API",
+    category: "fastapi",
+    description: "Automated bank statement reconciliation API with fuzzy matching. Upload two CSVs to get matched/unmatched transactions and balance discrepancies in 2 seconds with ±2 days date tolerance.",
+    tags: ["FastAPI", "Pandas", "PostgreSQL", "Fuzzy Matching"],
+    icon: Database,
+    image: "/projects/bank-reconciliation.png",
+    links: [
+      { label: "Interactive API Docs", url: "https://bank-reconciliation-kg87.onrender.com/docs", icon: ExternalLink },
+      { label: "GitHub Repository", url: "https://github.com/abdullah-forge/bank-reconciliation", icon: Github }
+    ]
+  },
+  {
+    id: 3,
+    title: "Data Normalizer API",
+    category: "fastapi",
+    description: "Asynchronous REST API built with FastAPI that ingests dirty CSV, Excel, and JSON files, auto-detects schemas, normalizes column names and dates, handles missing values, and generates audit reports.",
+    tags: ["FastAPI", "Async SQLAlchemy", "Pandas", "Pydantic v2"],
+    icon: Cpu,
+    image: "/projects/data-normalizer.png",
+    links: [
+      { label: "GitHub Repository", url: "https://github.com/abdullah-forge/data-normalizer-api", icon: Github }
+    ]
+  },
+  {
+    id: 4,
+    title: "FastAPI JWT Auth & CRUD API",
+    category: "fastapi",
+    description: "Production-ready authentication and CRUD backend featuring JWT tokens, OAuth2 workflows, bcrypt password hashing, role-guarded endpoints, and SQLAlchemy ORM with PostgreSQL.",
+    tags: ["FastAPI", "JWT Auth", "PostgreSQL", "OAuth2"],
+    icon: Shield,
+    image: "/projects/fastapi-jwt-auth.jpg",
+    links: [
+      { label: "GitHub Repository", url: "https://github.com/abdullah-forge/fastapi-jwt-auth-api", icon: Github }
+    ]
+  },
+  {
+    id: 5,
     title: "AEGIS-SWARM Model",
+    category: "ai",
     description: "The core open-source large language model fine-tuned specifically for agentic swarm logic and multi-agent coordination. Deployed on Hugging Face.",
     tags: ["LLM", "Model Training", "Hugging Face Model"],
     icon: Cpu,
@@ -29,8 +71,9 @@ const projects = [
     ]
   },
   {
-    id: 3,
+    id: 6,
     title: "AEGIS-SWARM Visual Agent",
+    category: "ai",
     description: "The vision-language model component of the AEGIS Swarm, optimized for processing and acting on visual inputs in multi-agent workflows.",
     tags: ["Vision LLM", "Multimodal", "Hugging Face Model"],
     icon: Sparkles,
@@ -40,8 +83,9 @@ const projects = [
     ]
   },
   {
-    id: 4,
+    id: 7,
     title: "FlumenIntel App",
+    category: "ai",
     description: "An intelligent app providing real-time data analysis, intelligence parsing, and visualization. Powered by machine learning pipelines and hosted on Hugging Face Spaces.",
     tags: ["Data Analytics", "Machine Learning", "Interactive UI"],
     icon: Building2,
@@ -52,8 +96,9 @@ const projects = [
     ]
   },
   {
-    id: 5,
+    id: 8,
     title: "8x8 Sparsity-Aware Dynamic Power Gating",
+    category: "hardware",
     description: "A hardware-level 8x8 matrix multiplication architecture implementing dynamic power gating. It detects zero elements in real-time to gate the clock and power domains of processing units.",
     tags: ["Verilog/VHDL", "Hardware Design", "Power Optimization"],
     icon: Cpu,
@@ -63,8 +108,9 @@ const projects = [
     ]
   },
   {
-    id: 6,
+    id: 9,
     title: "Nation-Explorer",
+    category: "apps",
     description: "A comprehensive Object-Oriented Programming (OOP) project designed to explore and search nation metrics, demographics, and geographical data using C++ / Java design patterns.",
     tags: ["OOP Design", "C++ / Java", "Data Parsing"],
     icon: Globe,
@@ -74,8 +120,9 @@ const projects = [
     ]
   },
   {
-    id: 7,
+    id: 10,
     title: "Fake News Detector",
+    category: "ai",
     description: "An AI-driven cybersecurity and intelligence tool that detects and flags misinformation in real-time. Built during a hackathon using NLP classification models.",
     tags: ["NLP", "Cybersecurity", "Text Classification", "Hackathon"],
     icon: Shield,
@@ -85,8 +132,9 @@ const projects = [
     ]
   },
   {
-    id: 8,
+    id: 11,
     title: "Classic Pong Game",
+    category: "apps",
     description: "A replica of the classic arcade Pong game, showcasing 2D graphics rendering, responsive control logic, and physics-based paddle-ball collision calculations.",
     tags: ["Game Dev", "GUI / Graphics", "Collision Logic"],
     icon: Gamepad2,
@@ -96,8 +144,9 @@ const projects = [
     ]
   },
   {
-    id: 9,
+    id: 12,
     title: "Retro Snake Game",
+    category: "apps",
     description: "A dynamic grid-based Snake game featuring real-time collision detection, score tracking, and food generation algorithms.",
     tags: ["Game Dev", "Algorithms", "GUI Design"],
     icon: Gamepad2,
@@ -109,11 +158,17 @@ const projects = [
 ]
 
 export function ProjectsSection() {
+  const [activeCategory, setActiveCategory] = useState("all")
+
+  const filteredProjects = projects.filter(
+    (project) => activeCategory === "all" || project.category === activeCategory
+  )
+
   return (
     <section id="projects" className="relative bg-background py-24 md:py-32 px-8 md:px-16">
       <div className="relative z-10 max-w-7xl mx-auto">
         {/* Section header */}
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-16">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-12">
           <div>
             <motion.span 
               className="text-muted-foreground text-sm tracking-wider uppercase mb-4 block"
@@ -142,23 +197,50 @@ export function ProjectsSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            A showcase of custom AI models, agent swarms, hardware-accelerated designs, and desktop apps.
+            A showcase of high-performance FastAPI backends, agent swarms, AI models, hardware accelerators, and desktop software.
           </motion.p>
         </div>
 
+        {/* Category Filters */}
+        <div className="flex flex-wrap gap-2 mb-12">
+          {projectCategories.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => setActiveCategory(cat)}
+              className={`relative px-6 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all duration-300 border ${
+                activeCategory === cat
+                  ? "bg-primary text-primary-foreground border-primary"
+                  : "bg-muted/30 text-muted-foreground border-border/40 hover:text-foreground hover:bg-muted/50"
+              }`}
+            >
+              {cat === "all"
+                ? "All Projects"
+                : cat === "fastapi"
+                ? "FastAPI & Backend"
+                : cat === "ai"
+                ? "AI & Agent Swarms"
+                : cat === "hardware"
+                ? "Hardware / VHDL"
+                : "Games & Desktop"}
+            </button>
+          ))}
+        </div>
+
         {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => {
-            const ProjectIcon = project.icon
-            return (
-              <motion.article
-                key={project.id}
-                className="group relative bg-card/40 backdrop-blur-sm border border-border/80 rounded-3xl overflow-hidden flex flex-col justify-between"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-              >
+        <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <AnimatePresence mode="popLayout">
+            {filteredProjects.map((project, index) => {
+              const ProjectIcon = project.icon
+              return (
+                <motion.article
+                  layout
+                  key={project.id}
+                  className="group relative bg-card/40 backdrop-blur-sm border border-border/80 rounded-3xl overflow-hidden flex flex-col justify-between"
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ duration: 0.4 }}
+                >
                 <div>
                   {/* Project Image */}
                   <div className="relative aspect-[16/9] w-full overflow-hidden bg-muted">
@@ -232,7 +314,8 @@ export function ProjectsSection() {
               </motion.article>
             )
           })}
-        </div>
+          </AnimatePresence>
+        </motion.div>
       </div>
     </section>
   )
