@@ -1,10 +1,20 @@
 "use client"
 
+import { useState } from "react"
 import { ArrowRight, Download, Github, Linkedin, Mail, Twitter } from "lucide-react"
 import { motion } from "framer-motion"
 import Image from "next/image"
 
+const navLinks = [
+  { label: "About", href: "#about" },
+  { label: "Projects", href: "#projects" },
+  { label: "Services", href: "#services" },
+  { label: "Contact", href: "#contact" },
+]
+
 export function HeroSection() {
+  const [menuOpen, setMenuOpen] = useState(false)
+
   return (
     <section className="relative min-h-screen bg-background overflow-hidden">
       {/* Background Portrait Image */}
@@ -22,7 +32,7 @@ export function HeroSection() {
       </div>
 
       {/* Navigation */}
-      <nav className="relative z-10 flex items-center justify-between px-8 md:px-16 py-6">
+      <nav className="relative z-20 flex items-center justify-between px-8 md:px-16 py-6">
         <motion.span 
           className="text-foreground font-bold text-lg tracking-wider"
           initial={{ opacity: 0, y: -20 }}
@@ -39,18 +49,39 @@ export function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
         >
-          <a href="#about" className="hover:text-primary transition-colors">About</a>
-          <a href="#projects" className="hover:text-primary transition-colors">Projects</a>
-          <a href="#articles" className="hover:text-primary transition-colors">Articles</a>
-          <a href="#contact" className="hover:text-primary transition-colors">Contact</a>
+          {navLinks.map((link) => (
+            <a key={link.href} href={link.href} className="hover:text-primary transition-colors">
+              {link.label}
+            </a>
+          ))}
         </motion.div>
 
         {/* Hamburger menu for mobile */}
-        <button className="md:hidden text-foreground p-2" aria-label="Menu">
+        <button
+          className="md:hidden text-foreground p-2"
+          aria-label={menuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={menuOpen}
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
           <div className="w-6 h-0.5 bg-foreground mb-1.5" />
           <div className="w-6 h-0.5 bg-foreground mb-1.5" />
           <div className="w-4 h-0.5 bg-foreground" />
         </button>
+
+        {menuOpen && (
+          <div className="md:hidden absolute top-full left-8 right-8 flex flex-col gap-1 p-3 bg-card/95 backdrop-blur-sm border border-border rounded-2xl">
+            {navLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={() => setMenuOpen(false)}
+                className="px-4 py-3 rounded-xl text-foreground hover:bg-muted/40 hover:text-primary transition-colors"
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+        )}
       </nav>
 
       {/* Hero Content */}
@@ -58,14 +89,17 @@ export function HeroSection() {
         <div className="flex-1 flex flex-col justify-end">
           {/* Top info row */}
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-8">
-            <motion.div 
-              className="flex items-center gap-8 text-sm text-muted-foreground"
+            <motion.div
+              className="flex flex-wrap items-center gap-x-8 gap-y-3 text-sm text-muted-foreground"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              <span>© 2026</span>
-              <span>Computer Engineering & AI — Lahore</span>
+              <span className="flex items-center gap-2 text-foreground font-medium">
+                <span className="w-2 h-2 rounded-full bg-emerald-400" />
+                Open to work
+              </span>
+              <span>Python Backend & AI Engineer — Lahore</span>
             </motion.div>
 
             {/* Connect button and tagline */}
@@ -82,8 +116,8 @@ export function HeroSection() {
                 {"Let's Connect"}
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </a>
-              <p className="text-sm text-muted-foreground text-right max-w-[200px]">
-                Crafting intelligent systems with purpose & precision.
+              <p className="text-sm text-muted-foreground text-right max-w-[240px]">
+                Freelance and part-time work now. Full-time roles from June 2027.
               </p>
             </motion.div>
           </div>
@@ -114,7 +148,7 @@ export function HeroSection() {
       >
         <div className="max-w-4xl">
           <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-8">
-            I’m Abdullah, a Computer Engineering student who loves exploring technology and building cool things from scratch. I’m passionate about AI, software development, networking, and hardware systems, and I’m always trying to learn something new every day.
+            I’m Abdullah, a final-year Computer Engineering student at COMSATS University Islamabad, Lahore Campus. I build Python backends and AI tools that do real work: an API that reconciles bank statements in seconds, an AI assistant that scores sales leads, and an ML system that catches phishing in messages and QR codes.
           </p>
           
           {/* CTA Buttons */}

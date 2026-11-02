@@ -6,8 +6,12 @@ import { useState } from "react"
 
 const faqs = [
   {
-    question: "What services do you offer?",
-    answer: "I specialize in AI/ML development, hardware acceleration, full-stack web development, and system architecture. Whether you need a custom AI solution, FPGA implementation, or a modern web application, I tailor my services to fit your needs."
+    question: "Are you available for full-time roles?",
+    answer: "Yes. I graduate in June 2027 with a BS in Computer Engineering from COMSATS Lahore, and I'm open to junior backend, AI or full-stack roles from then, on-site or remote. Until then I'm available for freelance and part-time work. My CV is at the top of this page."
+  },
+  {
+    question: "What kind of freelance work do you take on?",
+    answer: "Backend APIs, data cleanup and automation, AI features such as lead scoring, AI-drafted emails and chat assistants, and machine learning models. For each of these I've already built something similar that you can look at in the projects section."
   },
   {
     question: "How does the development process work?",
@@ -15,11 +19,7 @@ const faqs = [
   },
   {
     question: "How long does a project take?",
-    answer: "Project timelines vary based on complexity and scope. A simple web application might take 2-4 weeks, while complex AI systems or hardware designs can take 2-3 months. I provide detailed timelines during the consultation phase."
-  },
-  {
-    question: "What do I need to provide before we start?",
-    answer: "I typically need a clear project brief, any existing assets or documentation, access to relevant systems if applicable, and regular availability for feedback and decision-making throughout the project."
+    answer: "It depends on scope. A focused API, automation or small web app usually takes 2-4 weeks, while larger AI systems can take 2-3 months. You get a detailed timeline before we start."
   },
   {
     question: "Do you offer payment plans?",
@@ -27,7 +27,7 @@ const faqs = [
   },
   {
     question: "How do we get started?",
-    answer: "Simply reach out through the contact form or send me an email. We'll schedule an initial consultation to discuss your project, requirements, and timeline. From there, I'll provide a detailed proposal."
+    answer: "Email me at whello544@gmail.com or message me on LinkedIn with a short description of what you need. I'll reply with any questions, then send a proposal with scope, timeline and price."
   }
 ]
 

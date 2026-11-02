@@ -2,43 +2,87 @@
 
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { Brain, Building2, Github, ExternalLink, Sparkles, ArrowUpRight, Cpu, Globe, Shield, Gamepad2, Database } from "lucide-react"
+import { Bot, Github, ExternalLink, Sparkles, ArrowUpRight, Cpu, Globe, Shield, Gamepad2, Database, Waves } from "lucide-react"
+import type { LucideIcon } from "lucide-react"
 import Image from "next/image"
+
+type ProjectLink = { label: string; url: string; icon: LucideIcon; live?: boolean }
+
+type Project = {
+  id: number
+  title: string
+  category: string
+  description: string
+  tags: string[]
+  icon: LucideIcon
+  image?: string
+  note?: string
+  links: ProjectLink[]
+}
 
 const projectCategories = ["all", "fastapi", "ai", "hardware", "apps"]
 
-const projects = [
+const HF_WAKE_NOTE = "Hosted on Hugging Face Spaces, which sleep when idle. If you see 'This Space is sleeping', click 'Restart this Space' and wait a minute or two."
+
+const projects: Project[] = [
   {
     id: 1,
-    title: "AEGIS Swarm",
+    title: "AI Sales Copilot",
     category: "ai",
-    description: "An advanced multi-agent AI system designed for executing complex tasks autonomously, featuring collaborative agentic workflows and swarm communication layers.",
-    tags: ["Agent Swarm", "Multi-Agent AI", "Hugging Face Space"],
-    icon: Brain,
-    image: "/Aegis_swarm.jpg",
+    description: "Sales assistant for marketing agencies. Gemini scores every incoming lead from 0 to 100 and suggests how to approach it, and each lead gets its own AI chat that drafts follow-up emails or proposals and summarizes the lead on request.",
+    tags: ["FastAPI", "Gemini", "Supabase", "SQLAlchemy"],
+    icon: Bot,
+    image: "/projects/ai-sales-copilot.jpg",
+    note: "The backend runs on Render's free tier, so the first request can take about a minute. Lead scoring and the AI chat are in the agency dashboard, which needs an account.",
     links: [
-      { label: "Interactive Space", url: "https://huggingface.co/spaces/Wall06/swarm", icon: Sparkles },
-      { label: "GitHub Repository", url: "https://github.com/abdullah-forge/aegis_swarm_", icon: Github }
+      { label: "Live App", url: "https://ai-sales-copilot-one.vercel.app", icon: ExternalLink, live: true },
+      { label: "GitHub Repository", url: "https://github.com/abdullah-forge/ai-sales-copilot", icon: Github }
     ]
   },
   {
     id: 2,
     title: "Bank Reconciliation API",
     category: "fastapi",
-    description: "Automated bank statement reconciliation API with fuzzy matching. Upload two CSVs to get matched/unmatched transactions and balance discrepancies in 2 seconds with ±2 days date tolerance.",
-    tags: ["FastAPI", "Pandas", "PostgreSQL", "Fuzzy Matching"],
+    description: "Matching bank statements to a ledger by hand takes accountants hours. Upload both CSVs and this API returns matched and unmatched transactions plus the balance difference in about 2 seconds, using fuzzy matching with ±2-day date tolerance.",
+    tags: ["FastAPI", "Pandas", "PostgreSQL", "pytest"],
     icon: Database,
     image: "/projects/bank-reconciliation.png",
     links: [
-      { label: "Interactive API Docs", url: "https://bank-reconciliation-kg87.onrender.com/docs", icon: ExternalLink },
       { label: "GitHub Repository", url: "https://github.com/abdullah-forge/bank-reconciliation", icon: Github }
     ]
   },
   {
     id: 3,
+    title: "AEGIS-SWARM Threat Triage",
+    category: "ai",
+    description: "Catches phishing in SMS, emails, URLs and QR codes. An NLP agent (TF-IDF plus 13 security heuristics in a soft-voting ensemble, trained on 24,206 messages) scores the text with 94% test accuracy, and a visual agent decodes QR codes with OpenCV and classifies the hidden URL with 96%. Team project.",
+    tags: ["scikit-learn", "OpenCV", "Streamlit", "Supabase"],
+    icon: Shield,
+    image: "/Aegis_swarm.jpg",
+    note: HF_WAKE_NOTE,
+    links: [
+      { label: "Live Demo", url: "https://huggingface.co/spaces/Wall06/swarm", icon: Sparkles, live: true },
+      { label: "GitHub Repository", url: "https://github.com/abdullah-forge/aegis_swarm_", icon: Github },
+      { label: "Models on Hugging Face", url: "https://huggingface.co/Wall06/AEGIS-SWARM", icon: ExternalLink }
+    ]
+  },
+  {
+    id: 4,
+    title: "FlumenIntel",
+    category: "ai",
+    description: "River health dashboard. Turns field readings (flow, temperature, sediment, pH, dissolved oxygen) into water-quality, habitat and erosion scores, adds a brightness-based turbidity score from a satellite image, and writes a plain-language report with an LLM (Llama on Groq, falling back to Gemini) as a PDF or audio file.",
+    tags: ["Gradio", "Groq", "Gemini", "Plotly"],
+    icon: Waves,
+    image: "/flumen_intel.jpg",
+    links: [
+      { label: "GitHub Repository", url: "https://github.com/abdullah-forge/FlumenIntel-App", icon: Github }
+    ]
+  },
+  {
+    id: 5,
     title: "Data Normalizer API",
     category: "fastapi",
-    description: "Asynchronous REST API built with FastAPI that ingests dirty CSV, Excel, and JSON files, auto-detects schemas, normalizes column names and dates, handles missing values, and generates audit reports.",
+    description: "Asynchronous FastAPI service that ingests messy CSV, Excel and JSON files, detects the schema, standardizes column names and dates, handles missing values, and returns an audit report (detected schema, missing values and processing stats).",
     tags: ["FastAPI", "Async SQLAlchemy", "Pandas", "Pydantic v2"],
     icon: Cpu,
     image: "/projects/data-normalizer.png",
@@ -47,60 +91,33 @@ const projects = [
     ]
   },
   {
-    id: 4,
+    id: 6,
     title: "FastAPI JWT Auth & CRUD API",
     category: "fastapi",
-    description: "Production-ready authentication and CRUD backend featuring JWT tokens, OAuth2 workflows, bcrypt password hashing, role-guarded endpoints, and SQLAlchemy ORM with PostgreSQL.",
+    description: "Authentication and CRUD backend with JWT access tokens, the OAuth2 password flow, bcrypt password hashing, owner-only edit and delete, and SQLAlchemy with PostgreSQL.",
     tags: ["FastAPI", "JWT Auth", "PostgreSQL", "OAuth2"],
     icon: Shield,
-    image: "/projects/fastapi-jwt-auth.jpg",
     links: [
       { label: "GitHub Repository", url: "https://github.com/abdullah-forge/fastapi-jwt-auth-api", icon: Github }
     ]
   },
   {
-    id: 5,
-    title: "AEGIS-SWARM Model",
-    category: "ai",
-    description: "The core open-source large language model fine-tuned specifically for agentic swarm logic and multi-agent coordination. Deployed on Hugging Face.",
-    tags: ["LLM", "Model Training", "Hugging Face Model"],
-    icon: Cpu,
-    image: "/projects/bizai-hub.jpg",
-    links: [
-      { label: "Hugging Face Model", url: "https://huggingface.co/Wall06/AEGIS-SWARM", icon: ExternalLink }
-    ]
-  },
-  {
-    id: 6,
-    title: "AEGIS-SWARM Visual Agent",
-    category: "ai",
-    description: "The vision-language model component of the AEGIS Swarm, optimized for processing and acting on visual inputs in multi-agent workflows.",
-    tags: ["Vision LLM", "Multimodal", "Hugging Face Model"],
-    icon: Sparkles,
-    image: "/projects/sakura-corp.jpg",
-    links: [
-      { label: "Visual Agent Model", url: "https://huggingface.co/Wall06/AEGIS-SWARM-Visual-Agent", icon: ExternalLink }
-    ]
-  },
-  {
     id: 7,
-    title: "FlumenIntel App",
+    title: "Fake News Detector",
     category: "ai",
-    description: "An intelligent app providing real-time data analysis, intelligence parsing, and visualization. Powered by machine learning pipelines and hosted on Hugging Face Spaces.",
-    tags: ["Data Analytics", "Machine Learning", "Interactive UI"],
-    icon: Building2,
-    image: "/flumen_intel.jpg",
+    description: "Paste a news article to get a fake-news likelihood, its sentiment, an LLM-written explanation of the prediction, and related articles to cross-check it against. Built at a hackathon.",
+    tags: ["NLP", "Hugging Face", "Groq", "Hackathon"],
+    icon: Sparkles,
     links: [
-      { label: "Interactive Space", url: "https://huggingface.co/spaces/Wall06/FlumenIntel-App", icon: Sparkles },
-      { label: "GitHub Repository", url: "https://github.com/abdullah-forge/FlumenIntel-App", icon: Github }
+      { label: "GitHub Repository", url: "https://github.com/abdullah-forge/fake-news-detector", icon: Github }
     ]
   },
   {
     id: 8,
-    title: "8x8 Sparsity-Aware Dynamic Power Gating",
+    title: "Sparsity-Aware Processing Element",
     category: "hardware",
-    description: "A hardware-level 8x8 matrix multiplication architecture implementing dynamic power gating. It detects zero elements in real-time to gate the clock and power domains of processing units.",
-    tags: ["Verilog/VHDL", "Hardware Design", "Power Optimization"],
+    description: "VHDL design of a power-gated processing element (8-bit multiply, 32-bit accumulate), built as the basic block of an 8×8 systolic array for neural-network inference. When a weight is zero it skips the multiply and powers the multiplier down through a sleep transistor. Simulated in Quartus, with transistor-level layout in Microwind. Team project of three.",
+    tags: ["VHDL", "Quartus", "Microwind", "Power Gating"],
     icon: Cpu,
     image: "/8x8Sparsity_Aware.jpg",
     links: [
@@ -121,18 +138,6 @@ const projects = [
   },
   {
     id: 10,
-    title: "Fake News Detector",
-    category: "ai",
-    description: "An AI-driven cybersecurity and intelligence tool that detects and flags misinformation in real-time. Built during a hackathon using NLP classification models.",
-    tags: ["NLP", "Cybersecurity", "Text Classification", "Hackathon"],
-    icon: Shield,
-    image: "/projects/shield-ai.jpg",
-    links: [
-      { label: "GitHub Repository", url: "https://github.com/abdullah-forge/fake-news-detector", icon: Github }
-    ]
-  },
-  {
-    id: 11,
     title: "Classic Pong Game",
     category: "apps",
     description: "A replica of the classic arcade Pong game, showcasing 2D graphics rendering, responsive control logic, and physics-based paddle-ball collision calculations.",
@@ -144,7 +149,7 @@ const projects = [
     ]
   },
   {
-    id: 12,
+    id: 11,
     title: "Retro Snake Game",
     category: "apps",
     description: "A dynamic grid-based Snake game featuring real-time collision detection, score tracking, and food generation algorithms.",
@@ -170,7 +175,7 @@ export function ProjectsSection() {
         {/* Section header */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-12">
           <div>
-            <motion.span 
+            <motion.span
               className="text-muted-foreground text-sm tracking-wider uppercase mb-4 block"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
@@ -179,7 +184,7 @@ export function ProjectsSection() {
             >
               [Projects]
             </motion.span>
-            <motion.h2 
+            <motion.h2
               className="text-[clamp(2rem,6vw,4rem)] font-bold tracking-tighter leading-[0.9] text-foreground uppercase"
               style={{ fontFamily: 'var(--font-display)' }}
               initial={{ opacity: 0, y: 20 }}
@@ -187,17 +192,17 @@ export function ProjectsSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.1 }}
             >
-              My Projects &<br />Models
+              {"Things I've"}<br />Built
             </motion.h2>
           </div>
-          <motion.p 
+          <motion.p
             className="text-muted-foreground max-w-sm md:text-right"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            A showcase of high-performance FastAPI backends, agent swarms, AI models, hardware accelerators, and desktop software.
+            Projects marked Live are deployed and open in your browser. Free-hosted demos can take a minute to wake up. Every project links to its code.
           </motion.p>
         </div>
 
@@ -218,7 +223,7 @@ export function ProjectsSection() {
                 : cat === "fastapi"
                 ? "FastAPI & Backend"
                 : cat === "ai"
-                ? "AI & Agent Swarms"
+                ? "AI & Machine Learning"
                 : cat === "hardware"
                 ? "Hardware / VHDL"
                 : "Games & Desktop"}
@@ -229,8 +234,9 @@ export function ProjectsSection() {
         {/* Projects Grid */}
         <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <AnimatePresence mode="popLayout">
-            {filteredProjects.map((project, index) => {
+            {filteredProjects.map((project) => {
               const ProjectIcon = project.icon
+              const hasLiveDemo = project.links.some((link) => link.live)
               return (
                 <motion.article
                   layout
@@ -242,39 +248,51 @@ export function ProjectsSection() {
                   transition={{ duration: 0.4 }}
                 >
                 <div>
-                  {/* Project Image */}
+                  {/* Project Image (icon panel when there is no real screenshot) */}
                   <div className="relative aspect-[16/9] w-full overflow-hidden bg-muted">
-                    <Image
-                      src={project.image}
-                      alt={project.title}
-                      fill
-                      className="object-cover group-hover:scale-[1.02] transition-transform duration-700"
-                    />
+                    {project.image ? (
+                      <Image
+                        src={project.image}
+                        alt={project.title}
+                        fill
+                        className="object-cover group-hover:scale-[1.02] transition-transform duration-700"
+                      />
+                    ) : (
+                      <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-primary/25 via-secondary to-card">
+                        <ProjectIcon className="w-14 h-14 text-primary/80" />
+                      </div>
+                    )}
                     <div className="absolute inset-0 bg-gradient-to-t from-card via-card/20 to-transparent" />
+                    {hasLiveDemo && (
+                      <span className="absolute top-4 left-4 flex items-center gap-1.5 px-3 py-1 rounded-full bg-background/80 backdrop-blur-sm border border-emerald-400/40 text-emerald-300 text-[10px] font-bold uppercase tracking-widest">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                        Live
+                      </span>
+                    )}
                   </div>
-                  
+
                   {/* Project Info */}
                   <div className="p-8">
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="p-2.5 bg-primary/10 rounded-xl text-primary border border-primary/10">
+                    <div className="mb-4">
+                      <div className="inline-flex p-2.5 mb-4 bg-primary/10 rounded-xl text-primary border border-primary/10">
                         <ProjectIcon className="w-5 h-5" />
                       </div>
-                      <h3 
-                        className="text-2xl font-bold text-foreground group-hover:text-primary transition-colors line-clamp-1"
+                      <h3
+                        className="text-2xl leading-tight font-bold text-foreground group-hover:text-primary transition-colors"
                         style={{ fontFamily: 'var(--font-display)' }}
                       >
                         {project.title}
                       </h3>
                     </div>
 
-                    <p className="text-muted-foreground text-sm leading-relaxed mb-6 line-clamp-4">
+                    <p className="text-muted-foreground text-sm leading-relaxed mb-6">
                       {project.description}
                     </p>
 
                     {/* Tags */}
                     <div className="flex flex-wrap gap-2 mb-6">
                       {project.tags.map((tag) => (
-                        <span 
+                        <span
                           key={tag}
                           className="px-3 py-1 bg-accent/80 text-white text-xs rounded-full border border-primary/20 font-medium"
                         >
@@ -294,7 +312,7 @@ export function ProjectsSection() {
                     {project.links.map((link) => {
                       const LinkIcon = link.icon
                       return (
-                        <a 
+                        <a
                           key={link.label}
                           href={link.url}
                           target="_blank"
@@ -310,6 +328,9 @@ export function ProjectsSection() {
                       )
                     })}
                   </div>
+                  {project.note && (
+                    <p className="text-[11px] text-muted-foreground leading-relaxed mt-1">{project.note}</p>
+                  )}
                 </div>
               </motion.article>
             )

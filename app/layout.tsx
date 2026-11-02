@@ -13,10 +13,24 @@ const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk"
 });
 
+// Absolute base for link-preview images. Vercel sets VERCEL_PROJECT_PRODUCTION_URL,
+// so this follows a custom domain automatically once one is added.
+const siteUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL
+  ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+  : 'https://developer-portfolio-six-omega.vercel.app'
+
+const siteTitle = 'Muhammad Abdullah | Python Backend & AI Engineer'
+const siteDescription = 'Final-year Computer Engineering student in Lahore building FastAPI backends, data automation and AI tools, with live demos. Open to freelance work now and full-time roles from June 2027.'
+
 export const metadata: Metadata = {
-  title: 'Muhammad Abdullah | Computer Engineering & AI',
-  description: 'Building intelligent systems at the intersection of software and hardware. Computer Engineering & AI specialist based in Bahawalpur.',
-  generator: 'v0.app',
+  metadataBase: new URL(siteUrl),
+  title: siteTitle,
+  description: siteDescription,
+  openGraph: {
+    title: siteTitle,
+    description: siteDescription,
+    type: 'website',
+  },
   icons: {
     icon: [
       {

@@ -1,21 +1,22 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { ArrowUpRight, Mail, MapPin, Github, Linkedin, Twitter, Award } from "lucide-react"
+import { ArrowUpRight, Mail, MapPin, Calendar } from "lucide-react"
 
 const menuLinks = [
   { label: "Home", href: "#" },
   { label: "About", href: "#about" },
   { label: "Projects", href: "#projects" },
-  { label: "Articles", href: "#articles" },
+  { label: "Services", href: "#services" },
   { label: "Contact", href: "#contact" },
 ]
 
 const socialLinks = [
-  { label: "GitHub", href: "https://github.com/abdullah-forge", icon: Github },
-  { label: "LinkedIn", href: "https://www.linkedin.com/in/m-abdullah-ce?utm_source=share_via&utm_content=profile&utm_medium=member_android", icon: Linkedin },
-  { label: "Twitter", href: "https://x.com/_Abdulah_virk", icon: Twitter },
-  { label: "Credly Badges", href: "https://www.credly.com/earner/dashboard/home", icon: Award },
+  { label: "GitHub", href: "https://github.com/abdullah-forge" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/m-abdullah-ce" },
+  { label: "Hugging Face", href: "https://huggingface.co/Wall06" },
+  { label: "Twitter", href: "https://x.com/_Abdulah_virk" },
+  { label: "Credly Badges", href: "https://www.credly.com/users/muhammad-abdullah.d1d0395c" },
 ]
 
 export function ContactSection() {
@@ -32,7 +33,7 @@ export function ContactSection() {
             transition={{ duration: 0.6 }}
           >
             <p className="text-foreground leading-relaxed">
-              Crafting intelligent systems with precision & creativity—{"let's"} build something extraordinary.
+              Hiring for a junior backend or AI role, or need an API, automation or AI feature built? Send me an email and {"let's"} talk.
             </p>
           </motion.div>
 
@@ -54,13 +55,17 @@ export function ContactSection() {
                 <Mail className="w-4 h-4 text-primary" />
                 whello544@gmail.com
               </a>
-              <a 
-                href="#contact"
+              <a
+                href="mailto:whello544@gmail.com?subject=Call%20request"
                 className="flex items-center gap-2 text-foreground hover:text-primary transition-colors"
               >
-                <MapPin className="w-4 h-4 text-primary" />
-                book-a-call
+                <Calendar className="w-4 h-4 text-primary" />
+                Book a call
               </a>
+              <span className="flex items-center gap-2 text-muted-foreground">
+                <MapPin className="w-4 h-4 text-primary" />
+                Lahore, Pakistan
+              </span>
             </div>
           </motion.div>
 
@@ -139,16 +144,11 @@ export function ContactSection() {
           transition={{ duration: 0.6, delay: 0.5 }}
         >
           <div className="flex items-center gap-4 text-muted-foreground text-sm mb-4 md:mb-0">
-            <span>© 2026</span>
-            <span>UHub</span>
-            <span>—</span>
-            <span>Vercel</span>
+            <span>© 2026 Muhammad Abdullah</span>
           </div>
-          <div className="flex gap-8 text-sm text-muted-foreground">
-            <a href="#" className="hover:text-foreground transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-foreground transition-colors">Cookie Policy</a>
-            <a href="#" className="hover:text-foreground transition-colors">Terms and Conditions</a>
-          </div>
+          <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+            Back to top ↑
+          </a>
         </motion.div>
       </div>
     </section>

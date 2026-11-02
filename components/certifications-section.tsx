@@ -5,19 +5,34 @@ import { motion, AnimatePresence } from "framer-motion"
 import { Award, FileText, ArrowUpRight, ShieldCheck, Database, Cloud, BookOpen, BrainCircuit } from "lucide-react"
 import Image from "next/image"
 
-const categories = ["all", "aws", "coursera", "datacamp", "hackathons"]
+const categories = ["all", "awards", "cloud", "coursera", "datacamp"]
 
 const credentials = [
-  // AWS Badges (Credly)
+  // Awards & Society
+  {
+    id: "pec-genai",
+    title: "Generative AI Application Developer: Top Performer",
+    issuer: "Pakistan Engineering Council, with PakAngels, iCodeGuru & Aspire Pakistan",
+    date: "2025",
+    category: "awards",
+    type: "certificate",
+    description: "Completed the PEC Generative AI Training (Cohort 3, Aug-Sep 2025) and received the Top Performer award. Certificate ID f19c16a4ca020839.",
+    fileUrl: "/pec-genai-certificate.pdf",
+    icon: Award,
+    accent: "from-emerald-500/20 to-teal-500/20",
+    borderAccent: "group-hover:border-emerald-500/50"
+  },
+
+  // Cloud Badges (Credly + Udacity/AWS)
   {
     id: "aws-genai-practitioner",
     title: "AWS Cloud Quest: Generative AI Practitioner",
     issuer: "Amazon Web Services Training and Certification",
     date: "2026",
-    category: "aws",
+    category: "cloud",
     type: "badge",
     description: "Earners showcase proficiency in building generative AI solutions utilizing AWS AI services including prompt engineering, code generation, chatbots, content moderation, and model fine-tuning.",
-    fileUrl: "https://www.credly.com/earner/earned/badge/39c6ee3c-56cb-4119-8bdc-fa8905bc6368",
+    fileUrl: "https://www.credly.com/badges/39c6ee3c-56cb-4119-8bdc-fa8905bc6368",
     imageUrl: "/aws-genai-practitioner.png",
     icon: Award,
     accent: "from-amber-500/20 to-orange-500/20",
@@ -28,58 +43,44 @@ const credentials = [
     title: "AWS SimuLearn - Serverless Developer",
     issuer: "Amazon Web Services Training and Certification",
     date: "2026",
-    category: "aws",
+    category: "cloud",
     type: "badge",
     description: "Demonstrates solution building knowledge with multi-tiered serverless applications and hands-on experience with AWS serverless architecture, Lambda, API Gateway, and cloud development.",
-    fileUrl: "https://www.credly.com/earner/earned/badge/9c550fc4-fa65-4d95-a24a-9188f5eacf79",
+    fileUrl: "https://www.credly.com/badges/9c550fc4-fa65-4d95-a24a-9188f5eacf79",
     imageUrl: "/aws-serverless-developer.png",
     icon: Cloud,
     accent: "from-blue-500/20 to-indigo-500/20",
     borderAccent: "group-hover:border-blue-500/50"
   },
 
-  // Hackathons & Badges
-  {
-    id: "hackathon-cert",
-    title: "Hackathon Certificate",
-    issuer: "Competition Organizer",
-    date: "2026",
-    category: "hackathons",
-    type: "certificate",
-    description: "Certificate of achievement/participation awarded for outstanding performance and project building during the hackathon.",
-    fileUrl: "/hackathon certificate.pdf",
-    icon: FileText,
-    accent: "from-blue-500/20 to-cyan-500/20",
-    borderAccent: "group-hover:border-cyan-500/50"
-  },
-  {
-    id: "ieee-cert",
-    title: "IEEE Society Certificate",
-    issuer: "IEEE Student Branch",
-    date: "2026",
-    category: "hackathons",
-    type: "certificate",
-    description: "Certificate awarded for active contribution, leadership, and participation in IEEE Student Branch society events and engineering initiatives.",
-    fileUrl: "/IEEE-certificate.pdf",
-    icon: Award,
-    accent: "from-blue-500/20 to-indigo-500/20",
-    borderAccent: "group-hover:border-blue-500/50"
-  },
   {
     id: "completion-badge",
-    title: "Challenge Completion Badge",
-    issuer: "Google Cloud / Qwiklabs",
+    title: "AWS AI & ML Scholars: 2026 Challenge Completion",
+    issuer: "Udacity & AWS",
     date: "2026",
-    category: "hackathons",
+    category: "cloud",
     type: "badge",
-    description: "Earned for successfully completing technical track challenges and hands-on labs.",
+    description: "Passed project: Using a Pre-trained Image Classifier to Identify Dog Breeds.",
     fileUrl: "/Challenge Completion Badge_Light.webp",
     imageUrl: "/Challenge Completion Badge_Light.webp",
     icon: Award,
     accent: "from-amber-500/20 to-orange-500/20",
     borderAccent: "group-hover:border-amber-500/50"
   },
-  
+  {
+    id: "ieee-cert",
+    title: "Certificate of Appreciation",
+    issuer: "IEEE Student Branch, COMSATS University Islamabad, Lahore Campus",
+    date: "2025",
+    category: "awards",
+    type: "certificate",
+    description: "Recognized for outstanding efforts and contributions to the IEEE Student Branch during the Spring 2025 semester.",
+    fileUrl: "/IEEE-certificate.pdf",
+    icon: Award,
+    accent: "from-blue-500/20 to-indigo-500/20",
+    borderAccent: "group-hover:border-blue-500/50"
+  },
+
   // Coursera
   {
     id: "coursera-genai-everyone",
@@ -314,7 +315,7 @@ export function CertificationsSection() {
               Verifiable proof of technical courses completed, challenges conquered, and achievements.
             </motion.p>
             <motion.a
-              href="https://www.credly.com/earner/dashboard/home"
+              href="https://www.credly.com/users/muhammad-abdullah.d1d0395c"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-primary/10 hover:bg-primary/20 text-primary border border-primary/25 text-xs font-semibold transition-colors"
@@ -341,7 +342,7 @@ export function CertificationsSection() {
                   : "bg-muted/30 text-muted-foreground border-border/40 hover:text-foreground hover:bg-muted/50"
               }`}
             >
-              {cat === "all" ? "All Credentials" : cat === "aws" ? "AWS Badges" : cat === "hackathons" ? "Hackathons & Society" : cat}
+              {cat === "all" ? "All Credentials" : cat === "awards" ? "Awards & Society" : cat === "cloud" ? "Cloud Badges" : cat}
             </button>
           ))}
         </div>
@@ -409,7 +410,7 @@ export function CertificationsSection() {
 
                   <div className="mt-6 flex items-center justify-between">
                     <span className="inline-flex items-center gap-1.5 text-xs font-bold text-primary group-hover:underline">
-                      Verify Credential
+                      {cred.fileUrl.startsWith("/") ? (cred.type === "badge" ? "View Badge" : "View Certificate") : "Verify Credential"}
                       <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                     </span>
                     <ShieldCheck className="w-4.5 h-4.5 text-emerald-500/60" />

@@ -4,13 +4,11 @@ import { motion } from "framer-motion"
 import { ArrowUpRight } from "lucide-react"
 
 const techStack = [
-  { name: "Python", level: 95 },
-  { name: "FastAPI & REST APIs", level: 92 },
-  { name: "TensorFlow / PyTorch", level: 90 },
-  { name: "AWS Cloud & Serverless", level: 88 },
-  { name: "Verilog / VHDL", level: 85 },
-  { name: "PostgreSQL & Databases", level: 85 },
-  { name: "JavaScript / TypeScript", level: 80 },
+  { group: "Languages", items: ["Python", "SQL", "C++", "Java", "JavaScript / TypeScript"] },
+  { group: "Backend", items: ["FastAPI", "Pydantic", "SQLAlchemy", "PostgreSQL", "Supabase", "JWT / OAuth2", "pytest"] },
+  { group: "AI & Data", items: ["Gemini & Groq LLM APIs", "Hugging Face", "scikit-learn", "TensorFlow / Keras", "OpenCV", "Pandas", "Gradio / Streamlit"] },
+  { group: "Cloud & DevOps", items: ["AWS (Lambda, API Gateway, S3)", "Docker", "Vercel", "Render", "Git / GitHub"] },
+  { group: "Hardware & RF", items: ["Verilog", "VHDL", "Xilinx Vivado", "GNU Radio", "RTL-SDR"] },
 ]
 
 export function TechStackSection() {
@@ -37,53 +35,51 @@ export function TechStackSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.1 }}
             >
-              My Tech Arsenal
+              Tools I Build With
             </motion.h2>
           </div>
           <motion.div
-            className="flex flex-col items-end gap-4"
+            className="flex flex-col md:items-end gap-4"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <p className="text-muted-foreground max-w-sm md:text-right">
-              My go-to tools for crafting seamless digital experiences.
+              The languages, frameworks and platforms behind my projects and coursework.
             </p>
-            <a 
+            <a
               href="#projects"
               className="group flex items-center gap-2 text-primary text-sm font-medium"
             >
-              Full Stack
+              See them in my projects
               <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
             </a>
           </motion.div>
         </div>
 
-        {/* Tech Stack Progress Bars */}
-        <div className="space-y-8">
+        {/* Tech Stack Groups */}
+        <div className="space-y-0">
           {techStack.map((tech, index) => (
             <motion.div
-              key={tech.name}
-              className="flex items-center gap-8"
+              key={tech.group}
+              className="flex flex-col md:flex-row md:items-center gap-4 md:gap-8 py-6 border-t border-border last:border-b"
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              <div className="w-40 flex items-center gap-3">
-                <span className="text-foreground font-medium">{tech.name}</span>
+              <span className="md:w-48 shrink-0 text-foreground font-medium">{tech.group}</span>
+              <div className="flex flex-wrap gap-2">
+                {tech.items.map((item) => (
+                  <span
+                    key={item}
+                    className="px-3 py-1.5 bg-muted/40 text-foreground text-sm rounded-full border border-border"
+                  >
+                    {item}
+                  </span>
+                ))}
               </div>
-              <div className="flex-1 h-3 bg-muted rounded-full overflow-hidden">
-                <motion.div
-                  className="h-full bg-primary rounded-full"
-                  initial={{ width: 0 }}
-                  whileInView={{ width: `${tech.level}%` }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 1, delay: 0.3 + index * 0.1, ease: "easeOut" }}
-                />
-              </div>
-              <span className="text-foreground font-medium w-16 text-right">{tech.level}%</span>
             </motion.div>
           ))}
         </div>

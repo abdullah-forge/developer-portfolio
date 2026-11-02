@@ -2,26 +2,26 @@
 
 import { motion } from "framer-motion"
 
-const philosophyCards = [
+const focusCards = [
   {
     number: "1",
-    title: "DESIGN PHILOSOPHY",
-    description: "Where Aesthetics Meet Functionality"
+    title: "BACKEND APIs",
+    description: "FastAPI, PostgreSQL, JWT auth, pytest and auto-generated API docs."
   },
   {
-    number: "2", 
-    title: "MY APPROACH",
-    description: "Precision, Innovation & Impact"
+    number: "2",
+    title: "AI APPS",
+    description: "Lead scoring, report writing and chat built on Gemini and Llama."
   },
   {
     number: "3",
-    title: "WHAT DRIVES ME",
-    description: "Passion for Solving Complex Problems"
+    title: "MACHINE LEARNING",
+    description: "Phishing text and URL classifiers in scikit-learn, at 94% and 96% test accuracy."
   },
   {
     number: "4",
-    title: "THE EXPERIENCE",
-    description: "Blending Theory with Real-World Applications"
+    title: "HARDWARE & RF",
+    description: "VHDL designs, and ML for detecting wireless jamming."
   }
 ]
 
@@ -49,7 +49,7 @@ export function AboutSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.1 }}
         >
-          An Imaginative Brain Behind the Displays
+          Software That Saves People Hours
         </motion.h2>
 
         {/* Description row */}
@@ -61,20 +61,20 @@ export function AboutSection() {
           transition={{ duration: 0.8, delay: 0.3 }}
         >
           <p className="text-muted-foreground max-w-md leading-relaxed">
-            Designing systems that feel as good as they perform.
+            BS Computer Engineering, COMSATS University Islamabad, Lahore Campus. Graduating June 2027.
           </p>
-          
+
           <div className="max-w-lg">
             <p className="text-muted-foreground leading-relaxed mb-6">
-              I’m Abdullah, a Computer Engineering student who loves exploring technology and building cool things from scratch. I’m passionate about AI, software development, networking, and hardware systems, and I’m always trying to learn something new every day.
+              Most of my work is in Python: FastAPI backends with PostgreSQL, authentication and tests, plus AI features built on Gemini, Llama and scikit-learn. I like problems with a clear before and after, like matching bank statements to a ledger: a job that takes accountants hours by hand, and my API does in about two seconds.
             </p>
             <p className="text-muted-foreground leading-relaxed">
-              I enjoy solving problems, working on real-world projects, and improving my skills in C++, Java, and Python. My goal is to grow into a skilled developer and build innovative tech solutions that can make a real impact.
+              I also work close to the hardware. With two classmates I designed a sparsity-aware, power-gated processing element in VHDL, and my final-year project uses machine learning to detect RF jamming in 2.4 GHz wireless networks.
             </p>
           </div>
         </motion.div>
 
-        {/* Philosophy Cards - matching Avenzor */}
+        {/* Focus Cards */}
         <motion.div 
           className="mt-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
           initial={{ opacity: 0, y: 20 }}
@@ -82,7 +82,7 @@ export function AboutSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.4 }}
         >
-          {philosophyCards.map((card, index) => (
+          {focusCards.map((card, index) => (
             <div 
               key={card.number}
               className="group"
@@ -98,7 +98,7 @@ export function AboutSection() {
                   {card.number}. {card.title}
                 </span>
                 <p className="text-muted-foreground text-sm leading-relaxed">
-                  {`"${card.description}"`}
+                  {card.description}
                 </p>
               </motion.div>
             </div>

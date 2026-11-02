@@ -14,6 +14,28 @@ const workExperience = [
       "Deployed a logistics website for a startup, improving operational efficiency.",
       "Collaborated with developers on real-world projects using HTML, CSS, JS, SQL."
     ]
+  },
+  {
+    id: "mlsa",
+    role: "Microsoft Learn Student Ambassador",
+    company: "COMSATS University, Lahore",
+    location: "On campus",
+    period: "Feb – Jun 2025",
+    bullets: [
+      "Member and co-strategist: led technical workshops on AI and cloud for students.",
+      "Coordinated knowledge-sharing initiatives across campus."
+    ]
+  },
+  {
+    id: "rhombix",
+    role: "C++ Developer Intern",
+    company: "Rhombix Technologies",
+    location: "Remote",
+    period: "Jan – Mar 2025",
+    bullets: [
+      "Built C++ applications focused on data structures, algorithms and OOP principles.",
+      "Delivered a to-do list manager and a Caesar-cipher encryption tool."
+    ]
   }
 ]
 
@@ -42,16 +64,16 @@ export function ExperienceSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.1 }}
           >
-            Where I've worked
+            Work & Leadership
           </motion.h2>
-          <motion.p 
+          <motion.p
             className="text-muted-foreground max-w-sm md:text-right"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            Developing functional, high-performance web applications in collaborative team environments.
+            Two remote internships and a student ambassador role, alongside my degree.
           </motion.p>
         </div>
 

@@ -2,42 +2,37 @@
 
 import { motion } from "framer-motion"
 
+// Each service points at a project that proves it
 const services = [
   {
     id: 1,
-    title: "AI & Machine Learning",
-    description: "Developing intelligent systems using deep learning, NLP, and computer vision technologies",
+    title: "Backend APIs",
+    description: "FastAPI + PostgreSQL APIs with JWT login, per-user access control and auto-generated docs, ready for your web or mobile app.",
+    proof: "FastAPI JWT Auth & CRUD API",
   },
   {
     id: 2,
-    title: "Hardware Acceleration",
-    description: "Designing custom accelerators and FPGA implementations for high-performance computing",
+    title: "Data Cleanup & Automation",
+    description: "Turn messy CSV and Excel exports into clean, matched data automatically: reconciliation, normalization and reports.",
+    proof: "Bank Reconciliation API",
   },
   {
     id: 3,
-    title: "Full-Stack Development",
-    description: "Building scalable web applications with modern frameworks and cloud infrastructure",
+    title: "AI Features for Your Business",
+    description: "Lead scoring, AI-drafted emails and proposals, and per-lead AI chat assistants built on Gemini.",
+    proof: "AI Sales Copilot",
   },
   {
     id: 4,
-    title: "System Architecture",
-    description: "Creating robust system designs that bridge software and hardware efficiently",
-  },
-  {
-    id: 5,
-    title: "Research & Development",
-    description: "Conducting research in emerging technologies and translating findings into practical solutions",
-  },
-  {
-    id: 6,
-    title: "Technical Consulting",
-    description: "Providing expertise in AI integration, performance optimization, and system design",
+    title: "Machine Learning Models",
+    description: "Classifiers for text and URLs, trained, evaluated and served behind a simple demo you can share.",
+    proof: "AEGIS-SWARM Threat Triage",
   },
 ]
 
 export function ServicesSection() {
   return (
-    <section className="relative bg-primary py-24 md:py-32 px-8 md:px-16">
+    <section id="services" className="relative bg-primary py-24 md:py-32 px-8 md:px-16">
       <div className="relative z-10">
         {/* Section header */}
         <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-8 mb-16">
@@ -59,17 +54,17 @@ export function ServicesSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.1 }}
             >
-              Design Solutions,<br />Tailored for You
+              What I Can<br />Build for You
             </motion.h2>
           </div>
-          <motion.p 
+          <motion.p
             className="text-primary-foreground/80 max-w-sm md:text-right"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            High-quality engineering and AI solutions that make a difference.
+            Fixed-scope freelance projects for startups, agencies and small businesses. Each one is backed by a project you can look at.
           </motion.p>
         </div>
 
@@ -78,7 +73,7 @@ export function ServicesSection() {
           {services.map((service, index) => (
             <motion.div
               key={service.id}
-              className="group flex flex-col md:flex-row md:items-center justify-between py-6 border-t border-primary-foreground/20 last:border-b cursor-pointer"
+              className="group flex flex-col md:flex-row md:items-center justify-between py-6 border-t border-primary-foreground/20 last:border-b"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -90,11 +85,16 @@ export function ServicesSection() {
                   {service.title}
                 </h3>
               </div>
-              <div className="flex items-center gap-8 md:gap-16">
-                <p className="text-primary-foreground/70 text-sm max-w-xs text-right hidden md:block">
-                  {service.description}
-                </p>
-                <span className="text-primary-foreground/50 text-xs">
+              <div className="flex items-center gap-8 md:gap-16 pl-6 md:pl-0">
+                <div className="max-w-sm md:text-right">
+                  <p className="text-primary-foreground/70 text-sm">
+                    {service.description}
+                  </p>
+                  <a href="#projects" className="inline-block mt-1 text-primary-foreground text-xs font-semibold underline underline-offset-4 decoration-primary-foreground/40 hover:decoration-primary-foreground">
+                    See: {service.proof}
+                  </a>
+                </div>
+                <span className="text-primary-foreground/50 text-xs hidden md:block">
                   [{String(index + 1).padStart(2, '0')}]
                 </span>
               </div>
