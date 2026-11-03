@@ -19,8 +19,7 @@ export function Masthead() {
               {contents.map((item) => (
                 <li key={item.href}>
                   <a href={item.href}>
-                    <span className="num">{item.num}</span>
-                    {item.label}
+                    <span className="num">{item.num}</span>&nbsp;{item.label}
                   </a>
                 </li>
               ))}

@@ -25,7 +25,7 @@ export function FrontMatter() {
           <span>
             <a href="/cv.pdf" download="Muhammad_Abdullah_CV.pdf">
               Download my CV
-            </a>
+            </a>{" "}
             <span className="meta">PDF, 89&nbsp;KB</span>
           </span>
         </div>
@@ -55,7 +55,7 @@ export function FrontMatter() {
           alt="Black and white photo of Muhammad Abdullah smiling at the camera, arms crossed, in a black T-shirt."
         />
         <figcaption>
-          <span className="lbl">Fig.&nbsp;1</span>The author.
+          <span className="lbl">Fig.&nbsp;1</span>&nbsp;The author.
         </figcaption>
       </figure>
     </section>

@@ -14,7 +14,7 @@ export function ContactSection() {
   return (
     <section id="contact" className="sec wrap contact" aria-labelledby="h-contact">
       <h2 id="h-contact">
-        <span className="num">6</span>Contact
+        <span className="num">6</span>&nbsp;Contact
       </h2>
       <div className="cols">
         <div>

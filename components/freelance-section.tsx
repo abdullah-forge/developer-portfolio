@@ -2,7 +2,7 @@ export function FreelanceSection() {
   return (
     <section id="freelance" className="sec wrap" aria-labelledby="h-freelance">
       <h2 id="h-freelance">
-        <span className="num">5</span>Freelance work
+        <span className="num">5</span>&nbsp;Freelance work
       </h2>
       <p className="intro">
         Alongside my degree I take fixed-scope projects for startups, agencies and small businesses. Before you write,
@@ -20,12 +20,14 @@ export function FreelanceSection() {
           <tr>
             <th scope="row">Backend APIs</th>
             <td>
-              The server side of your web or mobile app, with sign-in so each customer sees only their own data, and
-              documentation the next developer can follow.
+              The server side of your web or mobile app, with JWT sign-in, owner-only edits and deletes, and
+              auto-generated docs the next developer can follow.
             </td>
             <td>
               <a href="#fig-3">API docs</a>
               <span className="ref">Fig.&nbsp;3, in 2.1</span>
+              <a href="#jwt-auth-api">JWT Auth API</a>
+              <span className="ref">2.5, code on GitHub</span>
             </td>
           </tr>
           <tr>

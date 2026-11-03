@@ -25,7 +25,7 @@ const smallerProjects = [
   {
     id: "sparsity-aware-pe",
     name: "Sparsity-Aware Processing Element",
-    what: "VHDL design of a power-gated processing element (8-bit multiply, 32-bit accumulate) as the basic block of an 8×8 systolic array for neural-network inference. When a weight is zero it skips the multiply and powers the multiplier down through a sleep transistor. Team of three; part of the layout is Fig. 2.",
+    what: "VHDL design of a power-gated processing element (8-bit multiply, 32-bit accumulate) as the basic block of an 8×8 systolic array for neural-network inference. When a weight is zero it skips the multiply and powers the multiplier down through a sleep transistor. Team of three; Fig. 2 shows a 2-bit multiplier we laid out in Microwind.",
     stack: "VHDL · Quartus · Microwind · power gating",
     url: "https://github.com/abdullah-forge/8x8-Sparsisty-aware-for-dynamic-power-gating",
   },
@@ -35,13 +35,6 @@ const smallerProjects = [
     what: "Object-oriented project for searching nation metrics, demographics and geographic data.",
     stack: "C++ / Java · OOP design · data parsing",
     url: "https://github.com/abdullah-forge/Nation-Explorer",
-  },
-  {
-    id: "pong",
-    name: "Classic Pong Game",
-    what: "The arcade classic, with 2D rendering, responsive controls and paddle-ball collision physics.",
-    stack: "Game dev · graphics · collision logic",
-    url: "https://github.com/abdullah-forge/Pong_game",
   },
   {
     id: "snake",
@@ -73,12 +66,12 @@ export function ProjectsSection() {
   return (
     <section id="projects" className="sec wrap" aria-labelledby="h-projects">
       <h2 id="h-projects">
-        <span className="num">2</span>Projects
+        <span className="num">2</span>&nbsp;Projects
       </h2>
 
       <article className="proj" id="bank-reconciliation" aria-labelledby="h-p1">
         <h3 className="sub" id="h-p1">
-          <span className="num">2.1</span>Bank Reconciliation API
+          <span className="num">2.1</span>&nbsp;Bank Reconciliation API
         </h3>
         <figure className="wide-fig" id="fig-3">
           <Crop
@@ -89,8 +82,8 @@ export function ProjectsSection() {
             alt="Swagger UI for the Bank Reconciliation API, version 0.1.0: the POST /api/v1/reconcile/ endpoint with two required file fields, bank_statement and internal_ledger, holding test_bank.csv and test_ledger.csv."
           />
           <figcaption>
-            <span className="lbl">Fig.&nbsp;3</span>The upload endpoint in the API’s generated docs, with two test CSV
-            files attached.
+            <span className="lbl">Fig.&nbsp;3</span>&nbsp;The upload endpoint in the API’s generated docs, with two test
+            CSV files attached.
           </figcaption>
         </figure>
         <div className="cols">
@@ -105,8 +98,8 @@ export function ProjectsSection() {
                   2
                 </a>
               </sup>
-              . Pandas does the matching, allowing up to two days between dates and small rounding differences in
-              amounts. Table&nbsp;1 shows the sample files from the README and the result.
+              . Pandas does the matching, allowing up to two days between dates. Table&nbsp;1 shows the sample files
+              from the README and the result.
             </p>
             <dl className="facts">
               <div>
@@ -114,7 +107,9 @@ export function ProjectsSection() {
                 <dd className="code">
                   POST /api/v1/reconcile/
                   <br />
-                  {"GET /api/v1/status/{job_id}"}
+                  {"GET /api/v1/reconcile/"}
+                  <wbr />
+                  {"status/{job_id}"}
                 </dd>
               </div>
               <div>
@@ -131,9 +126,12 @@ export function ProjectsSection() {
           </div>
           <table className="sample bt" id="table-1">
             <caption>
-              <span className="lbl">Table&nbsp;1</span>The sample statement and ledger from the README (January 2024),
-              and what comes back.
+              <span className="lbl">Table&nbsp;1</span>&nbsp;The sample statement and ledger from the README (January
+              2024), and what comes back.
             </caption>
+            <colgroup span={2} />
+            <colgroup span={2} />
+            <colgroup />
             <thead>
               <tr>
                 <th scope="colgroup" colSpan={2} className="grp">
@@ -212,7 +210,7 @@ export function ProjectsSection() {
 
       <article className="proj" id="ai-sales-copilot" aria-labelledby="h-p2">
         <h3 className="sub" id="h-p2">
-          <span className="num">2.2</span>AI Sales Copilot
+          <span className="num">2.2</span>&nbsp;AI Sales Copilot
         </h3>
         <div className="cols">
           <div className="proj-text">
@@ -252,8 +250,8 @@ export function ProjectsSection() {
               alt="Headline of the AI Sales Copilot landing page: The AI Sales Assistant for Modern Agencies, with a line about automating lead qualification and proposals."
             />
             <figcaption>
-              <span className="lbl">Fig.&nbsp;4</span>The live app’s landing page. Scoring and the chat sit behind the
-              agency login.
+              <span className="lbl">Fig.&nbsp;4</span>&nbsp;The live app’s landing page. Scoring and the chat sit behind
+              the agency login.
             </figcaption>
           </figure>
         </div>
@@ -261,7 +259,7 @@ export function ProjectsSection() {
 
       <article className="proj" id="aegis-swarm" aria-labelledby="h-p3">
         <h3 className="sub" id="h-p3">
-          <span className="num">2.3</span>AEGIS-SWARM Threat Triage
+          <span className="num">2.3</span>&nbsp;AEGIS-SWARM Threat Triage
         </h3>
         <div className="cols">
           <div className="proj-text">
@@ -309,7 +307,7 @@ export function ProjectsSection() {
               alt="AEGIS-SWARM title on a dark background, with a shield icon and the line Intelligent multi-modal threat triage."
             />
             <figcaption>
-              <span className="lbl">Fig.&nbsp;5</span>Title of the live demo on Hugging Face Spaces.
+              <span className="lbl">Fig.&nbsp;5</span>&nbsp;Title of the live demo on Hugging Face Spaces.
             </figcaption>
           </figure>
         </div>
@@ -317,7 +315,7 @@ export function ProjectsSection() {
 
       <article className="proj" id="flumenintel" aria-labelledby="h-p4">
         <h3 className="sub" id="h-p4">
-          <span className="num">2.4</span>FlumenIntel
+          <span className="num">2.4</span>&nbsp;FlumenIntel
         </h3>
         <div className="cols">
           <div className="proj-text">
@@ -350,8 +348,8 @@ export function ProjectsSection() {
               alt="FlumenIntel input form in a dark theme, under the heading Hydrological Data: flow rate 45, temperature 18, sediment 2 and construction 0."
             />
             <figcaption>
-              <span className="lbl">Fig.&nbsp;6</span>The input form with sample field readings. The scores and the
-              report appear after a run.
+              <span className="lbl">Fig.&nbsp;6</span>&nbsp;The input form with sample field readings. The scores and
+              the report appear after a run.
             </figcaption>
           </figure>
         </div>
@@ -359,7 +357,7 @@ export function ProjectsSection() {
 
       <div className="proj" id="smaller-projects">
         <h3 className="sub" id="h-p5">
-          <span className="num">2.5</span>Smaller projects
+          <span className="num">2.5</span>&nbsp;Smaller projects
         </h3>
         <table className="list bt" aria-labelledby="h-p5">
           <thead>
@@ -399,7 +397,7 @@ export function ProjectsSection() {
             </a>
           </li>
           <li id="note-2">
-            The processing time, the matching tolerances and the sample files in Table&nbsp;1 are from the{" "}
+            The processing time, the two-day date tolerance and the sample files in Table&nbsp;1 are from the{" "}
             <External href="https://github.com/abdullah-forge/bank-reconciliation">project README on GitHub</External>.{" "}
             <a className="back" href="#ref-2">
               Back to 2.1

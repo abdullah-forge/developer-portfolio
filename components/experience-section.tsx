@@ -2,7 +2,7 @@ export function ExperienceSection() {
   return (
     <section id="experience" className="sec wrap" aria-labelledby="h-experience">
       <h2 id="h-experience">
-        <span className="num">3</span>Experience
+        <span className="num">3</span>&nbsp;Experience
       </h2>
       <table className="exp bt" aria-label="Roles, most recent first">
         <tbody>

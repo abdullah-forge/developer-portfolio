@@ -4,7 +4,7 @@ export function OverviewSection() {
   return (
     <section id="overview" className="sec wrap" aria-labelledby="h-overview">
       <h2 id="h-overview">
-        <span className="num">1</span>Overview
+        <span className="num">1</span>&nbsp;Overview
       </h2>
       <div className="cols overview">
         <div className="prose">
@@ -14,7 +14,8 @@ export function OverviewSection() {
           </p>
           <p>
             I also like working close to the hardware. With two classmates I designed a sparsity-aware, power-gated
-            processing element in VHDL, simulated it in Quartus and drew its transistor-level layout in Microwind{" "}
+            processing element in VHDL, simulated it in Quartus and drew a 2-bit multiplier at transistor level in
+            Microwind{" "}
             <span className="xref">
               (<a href="#fig-2">Fig.&nbsp;2</a>)
             </span>
@@ -29,11 +30,11 @@ export function OverviewSection() {
             width={1363}
             height={625}
             area={{ x: 0, y: 5, w: 1242, h: 580 }}
-            alt="Transistor-level layout in Microwind on a black background: a row of logic cells drawn in coloured metal, polysilicon and diffusion layers between two supply rails, with input and output wires running off to the left."
+            alt="Transistor-level layout of a 2-bit multiplier in Microwind on a black background: a row of logic cells drawn in coloured metal, polysilicon and diffusion layers between two supply rails, with input and output wires running off to the left."
           />
           <figcaption>
-            <span className="lbl">Fig.&nbsp;2</span>Part of our layout in Microwind: AND and XOR cells between the VDD
-            and VSS rails, with the inputs a0, a1, b0, b1 and the outputs p0 to p3 on the left.
+            <span className="lbl">Fig.&nbsp;2</span>&nbsp;A 2-bit multiplier we laid out in Microwind: AND and XOR cells
+            between the VDD and VSS rails, with the inputs a0, a1, b0, b1 and the outputs p0 to p3 on the left.
           </figcaption>
         </figure>
       </div>

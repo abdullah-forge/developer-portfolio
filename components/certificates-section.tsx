@@ -2,11 +2,13 @@ import { Crop } from "@/components/crop"
 
 const DATACAMP = "https://www.datacamp.com/completed/statement-of-accomplishment/course"
 
-const courses = [
-  { title: "Generative AI for Everyone", from: "DeepLearning.AI, 2026", url: "https://coursera.org/share/6260a7d4dab0d85835460e8a6ddf681a" },
-  { title: "Create Generative AI Apps on Google Cloud", from: "Google Cloud, 2026", url: "https://coursera.org/share/58e4f98a549e85130eccbc852e3c8690" },
-  { title: "Python Data Structures", from: "University of Michigan, 2025", url: "https://coursera.org/share/2825ffaf241cbabfb22af99e745f4f3a" },
-  { title: "Programming for Everybody (Getting Started with Python)", from: "University of Michigan, 2025", url: "https://coursera.org/share/a061ebbfb835b8c8f34940219385da0f" },
+// The Coursera courses have no link: their share links open the course page, not the certificate.
+// Add each certificate's coursera.org/verify/... link here once it's available.
+const courses: { title: string; from: string; url?: string }[] = [
+  { title: "Generative AI for Everyone", from: "DeepLearning.AI, 2026" },
+  { title: "Create Generative AI Apps on Google Cloud", from: "Google Cloud, 2026" },
+  { title: "Python Data Structures", from: "University of Michigan, 2025" },
+  { title: "Programming for Everybody (Getting Started with Python)", from: "University of Michigan, 2025" },
   { title: "Introduction to APIs in Python", from: "DataCamp, 2026", url: `${DATACAMP}/860161036819129cc6a9174eaa8051896abc2d42` },
   { title: "Joining Data in SQL", from: "DataCamp, 2026", url: `${DATACAMP}/d56e301030d35037c3b89edf8186b8a901c2fd2f` },
   { title: "Intermediate SQL", from: "DataCamp, 2026", url: `${DATACAMP}/c011213b390e78346958d4ba3a65fea075a0fb08` },
@@ -23,7 +25,7 @@ export function CertificatesSection() {
   return (
     <section id="certificates" className="sec wrap" aria-labelledby="h-certificates">
       <h2 id="h-certificates">
-        <span className="num">4</span>Certificates
+        <span className="num">4</span>&nbsp;Certificates
       </h2>
       <div className="cols">
         <div>
@@ -86,9 +88,13 @@ export function CertificatesSection() {
         <ul>
           {courses.map((course) => (
             <li key={course.title}>
-              <a href={course.url} target="_blank" rel="noopener noreferrer">
-                {course.title}
-              </a>
+              {course.url ? (
+                <a href={course.url} target="_blank" rel="noopener noreferrer">
+                  {course.title}
+                </a>
+              ) : (
+                course.title
+              )}
               <span>{course.from}</span>
             </li>
           ))}
