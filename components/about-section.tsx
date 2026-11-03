@@ -1,110 +1,74 @@
-"use client"
+import { Section } from "@/components/section"
 
-import { motion } from "framer-motion"
+const focusAreas = [
+  {
+    title: "Backend APIs",
+    description: "FastAPI, PostgreSQL, JWT auth, pytest and auto-generated API docs.",
+  },
+  {
+    title: "AI apps",
+    description: "Lead scoring, report writing and chat built on Gemini and Llama.",
+  },
+  {
+    title: "Machine learning",
+    description: "Phishing text and URL classifiers in scikit-learn, at 94% and 96% test accuracy.",
+  },
+  {
+    title: "Hardware and RF",
+    description: "VHDL designs, and ML for detecting wireless jamming.",
+  },
+]
 
-const focusCards = [
-  {
-    number: "1",
-    title: "BACKEND APIs",
-    description: "FastAPI, PostgreSQL, JWT auth, pytest and auto-generated API docs."
-  },
-  {
-    number: "2",
-    title: "AI APPS",
-    description: "Lead scoring, report writing and chat built on Gemini and Llama."
-  },
-  {
-    number: "3",
-    title: "MACHINE LEARNING",
-    description: "Phishing text and URL classifiers in scikit-learn, at 94% and 96% test accuracy."
-  },
-  {
-    number: "4",
-    title: "HARDWARE & RF",
-    description: "VHDL designs, and ML for detecting wireless jamming."
-  }
+const tools = [
+  { name: "Languages", items: ["Python", "SQL", "C++", "Java", "JavaScript / TypeScript"] },
+  { name: "Backend", items: ["FastAPI", "Pydantic", "SQLAlchemy", "PostgreSQL", "Supabase", "JWT / OAuth2", "pytest"] },
+  { name: "AI and data", items: ["Gemini & Groq LLM APIs", "Hugging Face", "scikit-learn", "TensorFlow / Keras", "OpenCV", "Pandas", "Gradio / Streamlit"] },
+  { name: "Cloud and DevOps", items: ["AWS (Lambda, API Gateway, S3)", "Docker", "Vercel", "Render", "Git / GitHub"] },
+  { name: "Hardware and RF", items: ["Verilog", "VHDL", "Xilinx Vivado", "GNU Radio", "RTL-SDR"] },
 ]
 
 export function AboutSection() {
   return (
-    <section id="about" className="relative bg-background py-24 md:py-32 px-8 md:px-16">
-      <div className="relative z-10">
-        {/* Section label */}
-        <motion.span 
-          className="text-primary text-sm tracking-wider uppercase mb-8 block"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          [About Me]
-        </motion.span>
-
-        {/* Main headline - Avenzor style */}
-        <motion.h2 
-          className="text-[clamp(2rem,8vw,5rem)] font-bold tracking-tighter leading-[0.9] text-foreground uppercase max-w-5xl text-balance"
-          style={{ fontFamily: 'var(--font-display)' }}
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.1 }}
-        >
-          Software That Saves People Hours
-        </motion.h2>
-
-        {/* Description row */}
-        <motion.div 
-          className="mt-16 flex flex-col md:flex-row md:items-start md:justify-between gap-8"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-        >
-          <p className="text-muted-foreground max-w-md leading-relaxed">
+    <Section id="about" title="About">
+      <div className="grid gap-12 md:grid-cols-[3fr_2fr] md:gap-16">
+        <div className="space-y-5 text-lg leading-relaxed">
+          <p>
+            Most of my work is in Python: FastAPI backends with PostgreSQL, authentication and tests, plus AI features built on Gemini, Llama and scikit-learn. I like problems with a clear before and after, like matching bank statements to a ledger: a job that takes accountants hours by hand, and my API does in about two seconds.
+          </p>
+          <p className="text-muted-foreground">
+            I also work close to the hardware. With two classmates I designed a sparsity-aware, power-gated processing element in VHDL, and my final-year project uses machine learning to detect RF jamming in 2.4 GHz wireless networks.
+          </p>
+          <p className="text-base text-muted-foreground">
             BS Computer Engineering, COMSATS University Islamabad, Lahore Campus. Graduating June 2027.
           </p>
-
-          <div className="max-w-lg">
-            <p className="text-muted-foreground leading-relaxed mb-6">
-              Most of my work is in Python: FastAPI backends with PostgreSQL, authentication and tests, plus AI features built on Gemini, Llama and scikit-learn. I like problems with a clear before and after, like matching bank statements to a ledger: a job that takes accountants hours by hand, and my API does in about two seconds.
-            </p>
-            <p className="text-muted-foreground leading-relaxed">
-              I also work close to the hardware. With two classmates I designed a sparsity-aware, power-gated processing element in VHDL, and my final-year project uses machine learning to detect RF jamming in 2.4 GHz wireless networks.
-            </p>
-          </div>
-        </motion.div>
-
-        {/* Focus Cards */}
-        <motion.div 
-          className="mt-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-        >
-          {focusCards.map((card, index) => (
-            <div 
-              key={card.number}
-              className="group"
-            >
-              <motion.div
-                className="border-t border-border pt-6"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.1 * index }}
-              >
-                <span className="text-primary font-medium text-sm mb-3 block">
-                  {card.number}. {card.title}
-                </span>
-                <p className="text-muted-foreground text-sm leading-relaxed">
-                  {card.description}
-                </p>
-              </motion.div>
+        </div>
+        <dl className="grid content-start gap-6">
+          {focusAreas.map((area) => (
+            <div key={area.title} className="border-t border-border pt-4">
+              <dt className="font-medium">{area.title}</dt>
+              <dd className="mt-1 text-sm leading-relaxed text-muted-foreground">{area.description}</dd>
             </div>
           ))}
-        </motion.div>
+        </dl>
       </div>
-    </section>
+
+      <h3 className="mt-16 font-serif text-2xl font-medium tracking-tight">Tools I use</h3>
+      <dl className="mt-6 divide-y divide-border border-y border-border">
+        {tools.map((group) => (
+          <div key={group.name} className="grid gap-3 py-5 md:grid-cols-[170px_1fr] md:gap-8">
+            <dt className="font-medium">{group.name}</dt>
+            <dd>
+              <ul className="flex flex-wrap gap-2">
+                {group.items.map((item) => (
+                  <li key={item} className="rounded border border-border bg-card px-2 py-1 font-mono text-xs text-muted-foreground">
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </dd>
+          </div>
+        ))}
+      </dl>
+    </Section>
   )
 }

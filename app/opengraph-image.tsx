@@ -16,24 +16,20 @@ export default function OpengraphImage() {
           flexDirection: "column",
           justifyContent: "space-between",
           padding: "72px 80px",
-          background: "#0F0F11",
-          color: "#F4F4F7",
+          background: "#FAF9F6",
+          color: "#17181C",
+          borderBottom: "16px solid #1F4BC7",
         }}
       >
-        <div style={{ display: "flex", alignItems: "center", gap: 14, fontSize: 28, color: "#A1A1B0" }}>
-          <div style={{ width: 16, height: 16, borderRadius: 8, background: "#34D399" }} />
-          Open to work · Lahore, Pakistan
+        <div style={{ display: "flex", alignItems: "center", gap: 14, fontSize: 28, color: "#5A5F6B" }}>
+          <div style={{ width: 16, height: 16, borderRadius: 8, background: "#15803D" }} />
+          Available for freelance work · Lahore, Pakistan
         </div>
-        <div style={{ display: "flex", flexDirection: "column" }}>
-          <div style={{ fontSize: 112, fontWeight: 800, letterSpacing: -4, lineHeight: 0.95 }}>MUHAMMAD</div>
-          <div style={{ fontSize: 112, fontWeight: 800, letterSpacing: -4, lineHeight: 0.95, color: "#F27A54" }}>
-            ABDULLAH
-          </div>
+        <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+          <div style={{ fontSize: 104, letterSpacing: -3, lineHeight: 1 }}>Muhammad Abdullah</div>
+          <div style={{ fontSize: 40, color: "#1F4BC7" }}>I build Python backends and AI tools</div>
         </div>
-        <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-          <div style={{ fontSize: 44, fontWeight: 700 }}>Python Backend & AI Engineer</div>
-          <div style={{ fontSize: 30, color: "#A1A1B0" }}>FastAPI APIs · Data automation · AI apps · Machine learning</div>
-        </div>
+        <div style={{ fontSize: 28, color: "#5A5F6B" }}>FastAPI APIs · Data automation · AI apps · Machine learning</div>
       </div>
     ),
     size

@@ -1,213 +1,84 @@
-"use client"
-
-import { useState } from "react"
-import { ArrowRight, Download, Github, Linkedin, Mail, Twitter } from "lucide-react"
-import { motion } from "framer-motion"
 import Image from "next/image"
+import { ArrowRight, ArrowUpRight, Download } from "lucide-react"
 
-const navLinks = [
-  { label: "About", href: "#about" },
-  { label: "Projects", href: "#projects" },
-  { label: "Services", href: "#services" },
-  { label: "Contact", href: "#contact" },
+const profileLinks = [
+  { label: "GitHub", href: "https://github.com/abdullah-forge" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/m-abdullah-ce" },
+  { label: "Hugging Face", href: "https://huggingface.co/Wall06" },
 ]
 
 export function HeroSection() {
-  const [menuOpen, setMenuOpen] = useState(false)
-
   return (
-    <section className="relative min-h-screen bg-background overflow-hidden">
-      {/* Background Portrait Image */}
-      <div className="absolute inset-0">
-        <Image
-          src="/my-portrait.png"
-          alt="Muhammad Abdullah"
-          fill
-          className="object-cover object-center opacity-60"
-          priority
-        />
-        {/* Dark overlay gradient */}
-        <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/60 to-background" />
-        <div className="absolute inset-0 bg-gradient-to-r from-background/80 via-transparent to-background/80" />
-      </div>
-
-      {/* Navigation */}
-      <nav className="relative z-20 flex items-center justify-between px-8 md:px-16 py-6">
-        <motion.span 
-          className="text-foreground font-bold text-lg tracking-wider"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          style={{ fontFamily: 'var(--font-display)' }}
-        >
-          ABDULLAH
-        </motion.span>
-        
-        <motion.div 
-          className="hidden md:flex items-center gap-12 text-sm text-muted-foreground"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-        >
-          {navLinks.map((link) => (
-            <a key={link.href} href={link.href} className="hover:text-primary transition-colors">
-              {link.label}
-            </a>
-          ))}
-        </motion.div>
-
-        {/* Hamburger menu for mobile */}
-        <button
-          className="md:hidden text-foreground p-2"
-          aria-label={menuOpen ? "Close menu" : "Open menu"}
-          aria-expanded={menuOpen}
-          onClick={() => setMenuOpen(!menuOpen)}
-        >
-          <div className="w-6 h-0.5 bg-foreground mb-1.5" />
-          <div className="w-6 h-0.5 bg-foreground mb-1.5" />
-          <div className="w-4 h-0.5 bg-foreground" />
-        </button>
-
-        {menuOpen && (
-          <div className="md:hidden absolute top-full left-8 right-8 flex flex-col gap-1 p-3 bg-card/95 backdrop-blur-sm border border-border rounded-2xl">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={() => setMenuOpen(false)}
-                className="px-4 py-3 rounded-xl text-foreground hover:bg-muted/40 hover:text-primary transition-colors"
-              >
-                {link.label}
-              </a>
-            ))}
-          </div>
-        )}
-      </nav>
-
-      {/* Hero Content */}
-      <div className="relative z-10 flex flex-col justify-between min-h-[calc(100vh-88px)] px-8 md:px-16 pb-16">
-        <div className="flex-1 flex flex-col justify-end">
-          {/* Top info row */}
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-8">
-            <motion.div
-              className="flex flex-wrap items-center gap-x-8 gap-y-3 text-sm text-muted-foreground"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-            >
-              <span className="flex items-center gap-2 text-foreground font-medium">
-                <span className="w-2 h-2 rounded-full bg-emerald-400" />
-                Open to work
-              </span>
-              <span>Python Backend & AI Engineer — Lahore</span>
-            </motion.div>
-
-            {/* Connect button and tagline */}
-            <motion.div 
-              className="flex flex-col items-end gap-4"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.5 }}
-            >
-              <a 
-                href="#contact"
-                className="group flex items-center gap-2 bg-primary hover:bg-primary/90 text-primary-foreground px-5 py-2.5 rounded-full text-sm font-medium transition-all"
-              >
-                {"Let's Connect"}
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </a>
-              <p className="text-sm text-muted-foreground text-right max-w-[240px]">
-                Freelance and part-time work now. Full-time roles from June 2027.
-              </p>
-            </motion.div>
-          </div>
-
-          {/* Main Name Typography - Avenzor style */}
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.2 }}
-          >
-            <h1 
-              className="text-[clamp(3rem,15vw,12rem)] font-bold tracking-tighter leading-[0.85] text-foreground uppercase"
-              style={{ fontFamily: 'var(--font-display)' }}
-            >
-              <span className="block">Muhammad</span>
-              <span className="block text-primary">Abdullah</span>
-            </h1>
-          </motion.div>
-        </div>
-      </div>
-
-      {/* Floating Bio Card - below fold */}
-      <motion.div 
-        className="relative z-10 px-8 md:px-16 pb-24"
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.6 }}
-      >
-        <div className="max-w-4xl">
-          <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-8">
-            I’m Abdullah, a final-year Computer Engineering student at COMSATS University Islamabad, Lahore Campus. I build Python backends and AI tools that do real work: an API that reconciles bank statements in seconds, an AI assistant that scores sales leads, and an ML system that catches phishing in messages and QR codes.
+    <section className="border-b border-border">
+      <div className="mx-auto grid max-w-5xl items-end gap-8 px-6 pt-12 md:grid-cols-[1fr_auto] md:gap-12 md:px-8 md:pt-16">
+        <div className="pb-12 md:pb-16">
+          {/* Small round photo on phones; the full portrait sits beside the text on larger screens */}
+          <Image
+            src="/my-portrait.png"
+            alt=""
+            width={408}
+            height={532}
+            priority
+            className="mb-6 h-20 w-20 rounded-full border border-border bg-secondary object-cover object-top md:hidden"
+          />
+          <p className="flex items-start gap-2 text-sm text-muted-foreground">
+            <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-success" aria-hidden="true" />
+            Available for freelance work · Full-time from June 2027
           </p>
-          
-          {/* CTA Buttons */}
-          <div className="flex flex-wrap items-center gap-4 mb-8">
-            <a 
-              href="/cv.pdf"
-              className="group flex items-center gap-2 border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground px-6 py-3 rounded-full font-medium transition-all"
+          <h1 className="mt-5 font-serif text-5xl font-medium leading-[1.05] tracking-tight md:text-7xl">
+            Muhammad Abdullah
+          </h1>
+          <p className="mt-5 max-w-2xl text-2xl leading-snug md:text-[1.75rem]">
+            I build Python backends and AI tools that save teams hours.
+          </p>
+          <p className="mt-5 max-w-xl leading-relaxed text-muted-foreground md:text-lg">
+            Final-year Computer Engineering student at COMSATS University Islamabad, Lahore Campus. Recent work: an API that reconciles bank statements in about two seconds, an AI assistant that scores sales leads, and a phishing detector for messages and QR codes.
+          </p>
+          <div className="mt-8 flex flex-wrap items-center gap-3">
+            <a
+              href="#contact"
+              className="inline-flex h-11 items-center gap-2 rounded-md bg-primary px-5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary-hover"
             >
-              <Download className="w-4 h-4" />
+              Get in touch
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </a>
+            <a
+              href="/cv.pdf"
+              className="inline-flex h-11 items-center gap-2 rounded-md border border-border bg-card px-5 text-sm font-medium transition-colors hover:bg-secondary"
+            >
+              <Download className="h-4 w-4" aria-hidden="true" />
               Download CV
             </a>
-            <a 
-              href="#contact"
-              className="group flex items-center gap-2 bg-primary text-primary-foreground hover:bg-primary/90 px-6 py-3 rounded-full font-medium transition-all"
-            >
-              Get in Touch
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </a>
           </div>
-
-          {/* Social Icons */}
-          <div className="flex items-center gap-4">
-            <a 
-              href="https://github.com/abdullah-forge" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="p-3 bg-muted hover:bg-primary/20 rounded-full transition-colors"
-              aria-label="GitHub"
-            >
-              <Github className="w-5 h-5 text-foreground" />
-            </a>
-            <a 
-              href="https://www.linkedin.com/in/m-abdullah-ce?utm_source=share_via&utm_content=profile&utm_medium=member_android" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="p-3 bg-muted hover:bg-primary/20 rounded-full transition-colors"
-              aria-label="LinkedIn"
-            >
-              <Linkedin className="w-5 h-5 text-foreground" />
-            </a>
-            <a 
-              href="https://x.com/_Abdulah_virk" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="p-3 bg-muted hover:bg-primary/20 rounded-full transition-colors"
-              aria-label="Twitter"
-            >
-              <Twitter className="w-5 h-5 text-foreground" />
-            </a>
-            <a 
-              href="mailto:whello544@gmail.com"
-              className="p-3 bg-muted hover:bg-primary/20 rounded-full transition-colors"
-              aria-label="Email"
-            >
-              <Mail className="w-5 h-5 text-foreground" />
-            </a>
-          </div>
+          <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm">
+            {profileLinks.map((link) => (
+              <li key={link.label}>
+                <a
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 text-muted-foreground transition-colors hover:text-foreground"
+                >
+                  {link.label}
+                  <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
-      </motion.div>
+
+        <div className="relative hidden md:block">
+          <div className="absolute inset-x-0 bottom-0 h-[82%] rounded-t-full bg-secondary" aria-hidden="true" />
+          <Image
+            src="/my-portrait.png"
+            alt="Portrait of Muhammad Abdullah"
+            width={408}
+            height={532}
+            priority
+            className="relative h-auto w-[300px] lg:w-[340px]"
+          />
+        </div>
+      </div>
     </section>
   )
 }
