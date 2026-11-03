@@ -1,25 +1,21 @@
 import type { Metadata } from 'next'
-import { IBM_Plex_Mono, IBM_Plex_Sans, Newsreader } from 'next/font/google'
+import { Charis_SIL, Fragment_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { ThemeProvider } from '@/components/theme-provider'
 import './globals.css'
 
-// Serif for headings, a clean sans for reading, mono only for small technical details
-const plexSans = IBM_Plex_Sans({
+// A text serif with the feel of a printed engineering report, and a mono for code and figures
+const charis = Charis_SIL({
   subsets: ['latin'],
-  weight: ['400', '500', '600'],
-  variable: '--font-plex-sans',
+  weight: ['400', '700'],
+  style: ['normal', 'italic'],
+  variable: '--font-charis',
 })
 
-const plexMono = IBM_Plex_Mono({
+const fragment = Fragment_Mono({
   subsets: ['latin'],
-  weight: ['400', '500'],
-  variable: '--font-plex-mono',
-})
-
-const newsreader = Newsreader({
-  subsets: ['latin'],
-  variable: '--font-newsreader',
+  weight: '400',
+  variable: '--font-fragment',
 })
 
 // Absolute base for link-preview images. Vercel sets VERCEL_PROJECT_PRODUCTION_URL,
@@ -28,8 +24,8 @@ const siteUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL
   ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
   : 'https://developer-portfolio-six-omega.vercel.app'
 
-const siteTitle = 'Muhammad Abdullah | Python Backend & AI Engineer'
-const siteDescription = 'Final-year Computer Engineering student in Lahore building FastAPI backends, data automation and AI tools, with live demos. Open to freelance work now and full-time roles from June 2027.'
+const siteTitle = 'Muhammad Abdullah, Python backend and AI engineer'
+const siteDescription = 'Final-year computer engineering student in Lahore who builds Python backends, data automation and AI features. Freelance and part-time work now, full-time roles from June 2027.'
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -51,8 +47,9 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={`${plexSans.variable} ${plexMono.variable} ${newsreader.variable} font-sans antialiased`}>
+    // The font variables sit on <html> so the :root custom properties in globals.css can use them
+    <html lang="en" className={`${charis.variable} ${fragment.variable}`} suppressHydrationWarning>
+      <body id="top">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           {children}
         </ThemeProvider>

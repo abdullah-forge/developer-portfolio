@@ -1,7 +1,8 @@
 import { ImageResponse } from "next/og"
 
 // Preview card shown when the portfolio link is shared on LinkedIn, WhatsApp, X, etc.
-export const alt = "Muhammad Abdullah, Python Backend & AI Engineer"
+// It echoes the page: a heavy top rule, the name, and one highlighted number.
+export const alt = "Muhammad Abdullah, Python backend and AI engineer"
 export const size = { width: 1200, height: 630 }
 export const contentType = "image/png"
 
@@ -15,21 +16,31 @@ export default function OpengraphImage() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          padding: "72px 80px",
-          background: "#FAF9F6",
-          color: "#17181C",
-          borderBottom: "16px solid #1F4BC7",
+          padding: "64px 80px 72px",
+          background: "#FFFFFF",
+          color: "#1B1B1B",
         }}
       >
-        <div style={{ display: "flex", alignItems: "center", gap: 14, fontSize: 28, color: "#5A5F6B" }}>
-          <div style={{ width: 16, height: 16, borderRadius: 8, background: "#15803D" }} />
-          Available for freelance work · Lahore, Pakistan
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            borderTop: "8px solid #1B1B1B",
+            borderBottom: "2px solid #1B1B1B",
+            padding: "16px 0 18px",
+            fontSize: 26,
+            color: "#585858",
+          }}
+        >
+          <div style={{ display: "flex" }}>Python backend and AI engineer</div>
+          <div style={{ display: "flex" }}>Lahore, Pakistan</div>
         </div>
-        <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
-          <div style={{ fontSize: 104, letterSpacing: -3, lineHeight: 1 }}>Muhammad Abdullah</div>
-          <div style={{ fontSize: 40, color: "#1F4BC7" }}>I build Python backends and AI tools</div>
+        <div style={{ display: "flex", fontSize: 108, letterSpacing: -3, lineHeight: 1 }}>Muhammad Abdullah</div>
+        <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", fontSize: 38, lineHeight: 1.4 }}>
+          <div style={{ display: "flex" }}>My bank reconciliation API matches a statement to a ledger in&nbsp;</div>
+          <div style={{ display: "flex", background: "#FFE45C", padding: "0 8px" }}>about two seconds</div>
+          <div style={{ display: "flex" }}>.</div>
         </div>
-        <div style={{ fontSize: 28, color: "#5A5F6B" }}>FastAPI APIs · Data automation · AI apps · Machine learning</div>
       </div>
     ),
     size

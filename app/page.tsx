@@ -1,35 +1,28 @@
-import { SiteHeader } from "@/components/site-header"
-import { HeroSection } from "@/components/hero-section"
-import { ProofStrip } from "@/components/proof-strip"
+import { Masthead } from "@/components/masthead"
+import { FrontMatter } from "@/components/front-matter"
+import { OverviewSection } from "@/components/overview-section"
 import { ProjectsSection } from "@/components/projects-section"
-import { ServicesSection } from "@/components/services-section"
 import { ExperienceSection } from "@/components/experience-section"
-import { AboutSection } from "@/components/about-section"
-import { CertificationsSection } from "@/components/certifications-section"
-import { FAQSection } from "@/components/faq-section"
+import { CertificatesSection } from "@/components/certificates-section"
+import { FreelanceSection } from "@/components/freelance-section"
 import { ContactSection } from "@/components/contact-section"
 import { SiteFooter } from "@/components/site-footer"
 
-// Order follows what visitors look for first: who, proof, work, how I can help, then the details
+// The page reads like a numbered technical report: front matter, then sections 1 to 6
 export default function HomePage() {
   return (
     <>
-      <a
-        href="#projects"
-        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-card focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:shadow"
-      >
-        Skip to projects
+      <a className="skip" href="#main">
+        Skip to content
       </a>
-      <SiteHeader />
-      <main id="top">
-        <HeroSection />
-        <ProofStrip />
+      <Masthead />
+      <main id="main">
+        <FrontMatter />
+        <OverviewSection />
         <ProjectsSection />
-        <ServicesSection />
         <ExperienceSection />
-        <AboutSection />
-        <CertificationsSection />
-        <FAQSection />
+        <CertificatesSection />
+        <FreelanceSection />
         <ContactSection />
       </main>
       <SiteFooter />
