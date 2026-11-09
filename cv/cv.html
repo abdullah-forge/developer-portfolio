@@ -1,0 +1,215 @@
+<!doctype html>
+<!--
+  Source of public/cv.pdf. It follows the portfolio: same facts, same typefaces.
+  After editing, run `npm run cv` to print it to public/cv.pdf, then update the
+  file size shown next to "Download my CV" in components/front-matter.tsx.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Muhammad Abdullah, CV</title>
+<meta name="author" content="Muhammad Abdullah">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Charis+SIL:ital,wght@0,400;0,700;1,400&family=Fragment+Mono&display=block">
+<style>
+  @page { size: A4; margin: 11mm 14mm 10mm }
+  :root { --ink: #1B1B1B; --graphite: #585858; --rule-mid: #919191 }
+  * { box-sizing: border-box }
+  body { margin: 0; color: var(--ink); background: #FFFFFF; font: 400 9pt/1.3 "Charis SIL", Charter, Georgia, serif; font-kerning: normal }
+  a { color: inherit; text-decoration: underline; text-decoration-thickness: .5pt; text-underline-offset: .18em; text-decoration-color: var(--rule-mid) }
+  h1, h2, h3, p, ul, dl { margin: 0 }
+  p, li { text-wrap: pretty }
+  /* "C++" and "UTC+5" set tight, as on the portfolio */
+  .pp { letter-spacing: -.15em; margin-left: .02em; margin-right: 0; font-size: .86em; vertical-align: .05em }
+  .pl { margin: 0 -.07em }
+
+  /* Header: the portfolio's masthead rule, name and role */
+  header { border-top: 3pt solid var(--ink); padding-top: 6pt }
+  h1 { font-size: 20pt; line-height: 1.05; font-weight: 700; letter-spacing: -.01em }
+  .role { margin-top: 1pt; font-size: 11pt; font-style: italic }
+  .contact { margin-top: 4pt; font-size: 8.6pt; line-height: 1.45; color: var(--graphite) }
+  .contact a { color: var(--ink) }
+
+  section { margin-top: 6pt }
+  h2 { font-size: 10pt; line-height: 1.2; font-weight: 700; padding-top: 2.5pt; border-top: 1pt solid var(--ink); margin-bottom: 2.5pt }
+
+  .item + .item { margin-top: 3pt }
+  .head { display: flex; justify-content: space-between; align-items: baseline; gap: 12pt }
+  h3 { font-size: 9pt; font-weight: 700 }
+  h3 .org { font-weight: 400 }
+  .stack { margin-left: 5pt; font: 7.2pt "Fragment Mono", Consolas, monospace; color: var(--graphite) }
+  .when { flex: none; font-size: 8.4pt; color: var(--graphite); white-space: nowrap }
+  .links { font-size: 8.4pt; color: var(--graphite) }
+  .links a { color: var(--ink) }
+  ul { padding-left: 10pt }
+  li + li { margin-top: 1.5pt }
+  li::marker { content: "–  "; color: var(--graphite) }
+
+  .skills { display: grid; grid-template-columns: 76pt 1fr; column-gap: 6pt; row-gap: 1pt }
+  .skills dt { color: var(--graphite); font-style: italic }
+  .skills dd { margin: 0 }
+</style>
+</head>
+<body>
+<header>
+  <h1>Muhammad Abdullah</h1>
+  <p class="role">Python backend and AI engineer</p>
+  <p class="contact">
+    Lahore, Pakistan (UTC<span class="pl">+</span>5) · <a href="mailto:whello544@gmail.com">whello544@gmail.com</a> · <a href="tel:+923141679454"><span class="pl">+</span>92 314 1679454</a><br>
+    <a href="https://developer-portfolio-six-omega.vercel.app/">developer-portfolio-six-omega.vercel.app</a> ·
+    <a href="https://github.com/abdullah-forge">github.com/abdullah-forge</a> ·
+    <a href="https://www.linkedin.com/in/m-abdullah-ce">linkedin.com/in/m-abdullah-ce</a> ·
+    <a href="https://huggingface.co/Wall06">huggingface.co/Wall06</a><br>
+    Available for freelance and part-time work now, and for full-time roles from June&nbsp;2027, on-site or remote.
+  </p>
+</header>
+
+<section>
+  <h2>Education</h2>
+  <div class="item">
+    <div class="head">
+      <h3>BS Computer Engineering <span class="org">· COMSATS University Islamabad, Lahore Campus</span></h3>
+      <span class="when">Sep 2023 – Jun 2027</span>
+    </div>
+    <p>Coursework: VLSI Design, Digital System Design, Data Communication and Networks, Artificial Intelligence, Machine Learning.</p>
+    <p>Final-year project: machine learning that detects RF jamming in 2.4&nbsp;GHz wireless networks.</p>
+  </div>
+  <div class="item">
+    <div class="head">
+      <h3>Intermediate (ICS), Grade A <span class="org">· Punjab Group of Colleges</span></h3>
+      <span class="when">2021 – 2023</span>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Projects</h2>
+  <div class="item">
+    <div class="head">
+      <h3>Bank Reconciliation API <span class="stack">FastAPI · Pandas · PostgreSQL · pytest</span></h3>
+      <span class="when">2026</span>
+    </div>
+    <p>
+      Matches a bank statement to a ledger. Given two CSV files, a background job matches them, allowing two days
+      between dates, and returns the matched and unmatched transactions and the balance difference in about 2 seconds.
+      <span class="links"><a href="https://github.com/abdullah-forge/bank-reconciliation">Code</a></span>
+    </p>
+  </div>
+  <div class="item">
+    <div class="head">
+      <h3>AI Sales Copilot <span class="stack">FastAPI · Gemini · Supabase · SQLAlchemy</span></h3>
+      <span class="when">2026</span>
+    </div>
+    <p>
+      A sales assistant for marketing agencies. Gemini scores every incoming lead from 0 to 100 and suggests how to
+      approach it, and each lead has its own AI chat that drafts follow-up emails or proposals.
+      <span class="links"><a href="https://ai-sales-copilot-one.vercel.app">Live app</a> · <a href="https://github.com/abdullah-forge/ai-sales-copilot">Code</a></span>
+    </p>
+  </div>
+  <div class="item">
+    <div class="head">
+      <h3>AEGIS-SWARM Threat Triage <span class="org">· team project</span> <span class="stack">scikit-learn · OpenCV · Streamlit · Supabase</span></h3>
+      <span class="when">2026</span>
+    </div>
+    <p>
+      Catches phishing in SMS, emails, URLs and QR codes. NLP agent (TF-IDF plus 13 security heuristics, soft-voting
+      ensemble, 24,206 training messages): 94.34% test accuracy. QR agent (OpenCV decoding, URL classifier): 96.44%.
+      <span class="links"><a href="https://huggingface.co/spaces/Wall06/swarm">Demo</a> · <a href="https://github.com/abdullah-forge/aegis_swarm_">Code</a> · <a href="https://huggingface.co/Wall06/AEGIS-SWARM">Models</a></span>
+    </p>
+  </div>
+  <div class="item">
+    <div class="head">
+      <h3>FlumenIntel <span class="stack">Gradio · Groq · Gemini · Plotly</span></h3>
+      <span class="when">2025</span>
+    </div>
+    <p>
+      A river health dashboard. It turns field readings into water-quality, habitat and erosion scores, adds a
+      brightness-based turbidity score from a satellite image, and has an LLM write a report that downloads as a PDF.
+      <span class="links"><a href="https://github.com/abdullah-forge/FlumenIntel-App">Code</a></span>
+    </p>
+  </div>
+  <div class="item">
+    <div class="head">
+      <h3>Sparsity-Aware Processing Element <span class="org">· team of three</span> <span class="stack">VHDL · Quartus · Microwind</span></h3>
+      <span class="when">2026</span>
+    </div>
+    <p>
+      Power-gated processing element in VHDL (8-bit multiply, 32-bit accumulate), the basic block of an 8×8 systolic
+      array for neural-network inference. On a zero weight a sleep transistor powers the multiplier down.
+      <span class="links"><a href="https://github.com/abdullah-forge/8x8-Sparsisty-aware-for-dynamic-power-gating">Code</a></span>
+    </p>
+  </div>
+  <div class="item">
+    <h3>Smaller projects</h3>
+    <ul>
+      <li><a href="https://github.com/abdullah-forge/data-normalizer-api">Data Normalizer API</a> (2026): async service that cleans messy CSV, Excel and JSON files and returns an audit report.</li>
+      <li><a href="https://github.com/abdullah-forge/fastapi-jwt-auth-api">FastAPI JWT Auth &amp; CRUD API</a> (2026): JWT tokens, OAuth2 password flow, bcrypt hashing and owner-only edit and delete.</li>
+      <li><a href="https://github.com/abdullah-forge/fake-news-detector">Fake News Detector</a> (2025, hackathon): scores an article’s fake-news likelihood and sentiment, and explains it with an LLM.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2>Experience</h2>
+  <div class="item">
+    <div class="head">
+      <h3>Intern Web Developer <span class="org">· MKY Global Forwarding, remote</span></h3>
+      <span class="when">Mar 2025 – Jul 2025</span>
+    </div>
+    <p>Deployed a logistics website for a startup and worked with its developers on other projects in HTML, CSS, JavaScript and SQL.</p>
+  </div>
+  <div class="item">
+    <div class="head">
+      <h3>Microsoft Learn Student Ambassador <span class="org">· COMSATS University, Lahore</span></h3>
+      <span class="when">Feb 2025 – Jun 2025</span>
+    </div>
+    <p>Led technical workshops on AI and cloud for students, and helped plan the ambassadors’ activities on campus.</p>
+  </div>
+  <div class="item">
+    <div class="head">
+      <h3>C<span class="pp">++</span> Developer Intern <span class="org">· Rhombix Technologies, remote</span></h3>
+      <span class="when">Jan 2025 – Mar 2025</span>
+    </div>
+    <p>Built C<span class="pp">++</span> programs around data structures, algorithms and OOP, including a to-do list manager and a Caesar-cipher tool.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Certificates</h2>
+  <ul>
+    <li><b>Generative AI Application Developer</b>, Pakistan Engineering Council with PakAngels (2025): top performer in Cohort 3.</li>
+    <li><b>AWS AI &amp; ML Scholars: 2026 Challenge Completion</b>, Udacity and AWS (2026): pre-trained dog-breed classifier project.</li>
+    <li><b>AWS Cloud Quest: Generative AI Practitioner</b> and <b>AWS SimuLearn: Serverless Developer</b>, AWS (2026), both on <a href="https://www.credly.com/users/muhammad-abdullah.d1d0395c">Credly</a>.</li>
+    <li>Online courses (2025–2026): Generative AI for Everyone (DeepLearning.AI), Create Generative AI Apps on Google Cloud, Programming for Everybody and Python Data Structures (University of Michigan), and 10 DataCamp courses in SQL, Python, APIs, data engineering and cloud computing.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Skills</h2>
+  <dl class="skills">
+    <dt>Languages</dt><dd>Python, SQL, C<span class="pp">++</span>, Java, JavaScript / TypeScript</dd>
+    <dt>Backend</dt><dd>FastAPI, REST APIs, Pydantic, SQLAlchemy, PostgreSQL, Supabase, Pandas, JWT / OAuth2, pytest</dd>
+    <dt>AI and data</dt><dd>Gemini and Groq APIs, RAG, Hugging Face, scikit-learn, TensorFlow / Keras, OpenCV, Gradio, Streamlit</dd>
+    <dt>Cloud and DevOps</dt><dd>AWS (Lambda, API Gateway, S3), Docker, Vercel, Render, Git / GitHub</dd>
+    <dt>Hardware and RF</dt><dd>VHDL, Verilog, Xilinx Vivado, Quartus, Microwind, GNU Radio, RTL-SDR</dd>
+  </dl>
+</section>
+
+<section>
+  <h2>Volunteering</h2>
+  <div class="item">
+    <div class="head">
+      <h3>IEEE Student Branch <span class="org">· COMSATS Lahore, member. Certificate of Appreciation, Spring 2025.</span></h3>
+      <span class="when">Feb 2025 – Sep 2025</span>
+    </div>
+  </div>
+  <div class="item">
+    <div class="head">
+      <h3>Youthe <span class="org">· COMSATS Lahore, member. Student-led development events and community service.</span></h3>
+      <span class="when">Feb 2025 – present</span>
+    </div>
+  </div>
+</section>
+</body>
+</html>

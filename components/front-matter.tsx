@@ -26,7 +26,7 @@ export function FrontMatter() {
             <a href="/cv.pdf" download="Muhammad_Abdullah_CV.pdf">
               Download my CV
             </a>{" "}
-            <span className="meta">PDF, 89&nbsp;KB</span>
+            <span className="meta">PDF, 79&nbsp;KB</span>
           </span>
         </div>
         <div className="act-row">
